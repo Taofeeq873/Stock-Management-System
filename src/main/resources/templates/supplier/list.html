@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title></title>
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" th:href="@{/images/favicon.png}">
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+
+</head>
+
+<body>
+
+    <!--**********************************
+        Nav header start
+    ***********************************-->
+    <div class="nav-header">
+        <div class="brand-logo">
+            <a th:href="@{/index}">
+                <b class="logo-abbr"><img src="/images/logo.png" alt=""> </b>
+                <span class="logo-compact"><img src="/./images/logo-compact.png" alt=""></span>
+                <span class="brand-title">
+                                <img src="/images/logo-text.png" alt="">
+                        </span>
+            </a>
+        </div>
+    </div>
+    <!--**********************************
+        Nav header end
+    ***********************************-->
+
+    <!--**********************************
+        Header start
+    ***********************************-->
+    <div class="header">
+        <div class="header-content clearfix">
+            <div class="header-left">
+                <div class="input-group icons">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text bg-transparent border-0 pr-2 pr-sm-3" id="basic-addon1"><i class="mdi mdi-magnify"></i></span>
+                    </div>
+                    <input type="search" class="form-control" placeholder="Search Dashboard" aria-label="Search Dashboard">
+                    <div class="drop-down   d-md-none">
+                        <form action="#">
+                            <input type="text" class="form-control" placeholder="Search">
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="header-right">
+                <ul class="clearfix">
+                    <li class="icons dropdown d-none d-md-flex">
+                        <div sec:authorize="isAuthenticated()">
+                            <a class="log-user">
+                                Welcome<span sec:authentication="name">Username</span>
+                            </a>
+                        </div>
+                    </li>
+                    <li class="icons dropdown">
+                        <div class="user-img c-pointer position-relative"   data-toggle="dropdown">
+                            <span class="activity active"></span>
+                            <img src="/images/user/1.png" height="40" width="40" alt="">
+                        </div>
+                        <div class="drop-down dropdown-profile animated fadeIn dropdown-menu">
+                            <div class="dropdown-content-body">
+                                <ul>
+                                    <li>
+                                        <a th:href="@{/logout}"><i class="icon-user"></i> <span>Profile</span></a>
+                                    </li>
+                                    <li>
+                                        <a th:href="@{/logout}"><i class="icon-lock"></i> <span>Lock Screen</span></a>
+                                    </li>
+                                    <hr class="my-2">
+                                    <li><a th:href="@{/logout}"><i class="icon-key"></i> <span>Logout</span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--**********************************
+        Header end ti-comment-alt
+    ***********************************-->
+
+    <!--**********************************
+        Sidebar start
+    ***********************************-->
+    <div class="nk-sidebar">
+        <div class="nk-nav-scroll">
+            <ul class="metismenu" id="menu">
+                <li class="nav-label">Dashboard</li>
+                <li>
+                    <a href="/./index" aria-expanded="false">
+                        <i class="icon-speedometer menu-icon"></i><span class="nav-text">Dashboard</span>
+                    </a>
+                </li>
+
+                <hr class="my-2">
+
+                <li>
+                    <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                        <i class="icon-basket menu-icon"></i><span class="nav-text">Items</span>
+                    </a>
+                    <ul aria-expanded="false">
+                        <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Item Group</a>
+                            <ul aria-expanded="false">
+                                <li><a href="/./productTypes/create">Create Item Group</a></li>
+                                <li><a href="/./productTypes/list">List of Item Group</a></li>
+                            </ul>
+                        </li>
+                        <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Item</a>
+                            <ul aria-expanded="false">
+                                <li><a href="/./products/create">Create Item</a></li>
+                                <li><a href="/./products/list">List of Items</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+
+                <hr class="my-2">
+
+                <li>
+                    <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                        <i class="icon-user menu-icon"></i><span class="nav-text">Customers</span>
+                    </a>
+                    <ul aria-expanded="false">
+                        <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Customers</a>
+                            <ul aria-expanded="false">
+                                <li><a href="/./customers/create">Create Customers</a></li>
+                                <li><a href="/./customers/list">List of Customers</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul aria-expanded="false">
+                        <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Sales</a>
+                            <ul aria-expanded="false">
+                                <li><a href="/./sales/create">Create Sales</a></li>
+                                <li><a href="/./sales/list">List of Sales</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+
+                <hr class="my-2">
+
+                <li>
+                    <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                        <i class="icon-basket menu-icon"></i><span class="nav-text">Suppliers</span>
+                    </a>
+                    <ul aria-expanded="false">
+                        <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Supplier</a>
+                            <ul aria-expanded="false">
+                                <li><a href="/./suppliers/create">Create Supplier</a></li>
+                                <li><a href="/./suppliers/list">Available Suppliers</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul aria-expanded="false">
+                        <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Purchased</a>
+                            <ul aria-expanded="false">
+                                <li><a href="/./purchases/create">Create Purchased</a></li>
+                                <li><a href="/./purchases/list">List Purchased</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+
+                <hr class="my-2">
+
+                <li>
+                    <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                        <i class="icon-basket menu-icon"></i><span class="nav-text">Users</span>
+                    </a>
+                    <ul aria-expanded="false">
+                        <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">User</a>
+                            <ul aria-expanded="false">
+                                <li><a href="/./users/create">Create User</a></li>
+                                <li><a href="/./users/list">All Users</a></li>
+                                <li><a href="/./users/list">Assign Roles</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="/./roles/list">Role</a></li>
+                    </ul>
+                </li>
+
+                <hr class="my-2">
+
+                <li>
+                    <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                        <i class="icon-notebook menu-icon"></i><span class="nav-text">Login</span>
+                    </a>
+                    <ul aria-expanded="false">
+                        <li><a th:href="@{/logout}">Login</a></li>
+                        <li><a href="/./users/create">Register</a></li>
+                        <li><a th:href="@{/logout}">Lock Screen</a></li>
+                    </ul>
+                </li>
+
+                <hr class="my-2">
+
+            </ul>
+        </div>
+    </div>
+    <!--**********************************
+        Sidebar end
+    ***********************************-->
+
+    <!--**********************************
+        Content body start
+    ***********************************-->
+
+    <div class="content-body mt-5">
+
+        <div class="container">
+
+            <div class="justify-content-center">
+
+                <div class="col-xl-12">
+                    <div class="card ">
+                        <div class="card-body">
+                            <h4 class="card-title">Supplier List</h4>
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-striped verticle-middle">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">Id</th>
+                                        <th scope="col">Last Name</th>
+                                        <th scope="col">First Name</th>
+                                        <th scope="col">Phone</th>
+                                        <th scope="col">Email</th>
+                                        <th scope="col">Address</th>
+                                        <th scope="col">Company Name</th>
+                                        <th scope="col">Action</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr th:each="row : *{suppliers}">
+                                        <td th:text="${row.getId()}"></td>
+                                        <td th:text="${row.getLastName()}"></td>
+                                        <td th:text="${row.getFirstName()}"></td>
+                                        <td th:text="${row.getPhone()}"></td>
+                                        <td th:text="${row.getAddress()}"></td>
+                                        <td th:text="${row.getEmail()}"></td>
+                                        <td th:text="${row.getCompanyName()}"></td>
+                                        <td><a th:href="@{/suppliers/edit/{id}(id=${row.getId()})}"><button class="btn btn-warning btn"><i class="fa fa-pencil color-muted m-r-5"></i></button></a> | <a th:href="@{/suppliers/delete/{id}(id=${row.getId()})}"><button class="btn btn-warning btn"><i class="fa fa-close color-danger"></i></button></a></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!--**********************************
+        Footer end
+    ***********************************-->
+
+
+    <!--**********************************
+        Scripts
+    ***********************************-->
+    <script src="/plugins/common/common.min.js"></script>
+    <script src="/js/custom.min.js"></script>
+    <script src="/js/settings.js"></script>
+    <script src="/js/gleek.js"></script>
+    <script src="/js/styleSwitcher.js"></script>
+
+</body>
+
+</html>
