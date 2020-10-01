@@ -6,9 +6,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>My Stock Management</title>
+    <title>Sirs-Inventory</title>
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" th:href="@{/images/favicon.png}">
+    <link rel="icon" type="image/png" sizes="16x16" th:href="@{/images/l-white.png}">
     <!-- Custom Stylesheet -->
     <link rel="stylesheet" th:href="@{/css/style.css}">
 
@@ -17,7 +17,7 @@
 <body>
 
         <!--**********************************
-            Nav header start
+        Nav header start
         ***********************************-->
         <div class="nav-header">
             <div class="brand-logo">
@@ -26,7 +26,7 @@
                     <span class="logo-compact"><img src="/./images/logo-compact.png" alt=""></span>
                     <span class="brand-title">
                             <img src="/images/logo-text.png" alt="">
-                    </span>
+                        </span>
                 </a>
             </div>
         </div>
@@ -57,20 +57,20 @@
                         <li class="icons dropdown d-none d-md-flex">
                             <div sec:authorize="isAuthenticated()">
                                 <a class="log-user">
-                                    Welcome<span sec:authentication="name">Username</span>
+                                    Welcome<span sec:authentication="name">username</span>
                                 </a>
                             </div>
                         </li>
                         <li class="icons dropdown">
                             <div class="user-img c-pointer position-relative"   data-toggle="dropdown">
-                                <span class="activity active"></span>
+                                <!--                            <span class="activity active"></span>-->
                                 <img src="/images/user/1.png" height="40" width="40" alt="">
                             </div>
                             <div class="drop-down dropdown-profile animated fadeIn dropdown-menu">
                                 <div class="dropdown-content-body">
                                     <ul>
                                         <li>
-                                            <a th:href="@{/logout}"><i class="icon-user"></i> <span>Profile</span></a>
+                                            <a th:href="@{/admins/dashboard/{username}(username=${#request.remoteUser})}"><i class="icon-user"></i> <span>Profile</span></a>
                                         </li>
                                         <li>
                                             <a th:href="@{/logout}"><i class="icon-lock"></i> <span>Lock Screen</span></a>
@@ -102,10 +102,8 @@
                         </a>
                     </li>
 
-                    <hr class="my-2">
-
                     <li>
-                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                        <a class="has-arrow" href="javascript:void()" aria-expanded="false"  sec:authorize="hasRole('ROLE_ADMIN')">
                             <i class="icon-basket menu-icon"></i><span class="nav-text">Items</span>
                         </a>
                         <ul aria-expanded="false">
@@ -124,10 +122,9 @@
                         </ul>
                     </li>
 
-                    <hr class="my-2">
 
                     <li>
-                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                        <a class="has-arrow" href="javascript:void()" aria-expanded="false" sec:authorize="hasRole('ROLE_ADMIN')">
                             <i class="icon-user menu-icon"></i><span class="nav-text">Customers</span>
                         </a>
                         <ul aria-expanded="false">
@@ -148,10 +145,9 @@
                         </ul>
                     </li>
 
-                    <hr class="my-2">
 
                     <li>
-                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                        <a class="has-arrow" href="javascript:void()" aria-expanded="false" sec:authorize="hasRole('ROLE_ADMIN')">
                             <i class="icon-basket menu-icon"></i><span class="nav-text">Suppliers</span>
                         </a>
                         <ul aria-expanded="false">
@@ -172,10 +168,9 @@
                         </ul>
                     </li>
 
-                    <hr class="my-2">
 
-                    <li>
-                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                    <li >
+                        <a class="has-arrow" href="javascript:void()" aria-expanded="false" sec:authorize="hasRole('ROLE_ADMIN')">
                             <i class="icon-basket menu-icon"></i><span class="nav-text">Users</span>
                         </a>
                         <ul aria-expanded="false">
@@ -190,7 +185,6 @@
                         </ul>
                     </li>
 
-                    <hr class="my-2">
 
                     <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
@@ -211,6 +205,7 @@
         <!--**********************************
             Sidebar end
         ***********************************-->
+
 
         <!--**********************************
             Content body start
