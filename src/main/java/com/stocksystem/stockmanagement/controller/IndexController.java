@@ -17,7 +17,7 @@ public class IndexController {
     @Autowired
     private LocationRepository locationRepository;
 
-    @GetMapping("/index")
+    @GetMapping("/")
     public String index(Model model){
         model.addAttribute("locations", locationRepository.findAll());
         return "/index";
