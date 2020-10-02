@@ -22,10 +22,10 @@ public class IndexController {
         model.addAttribute("locations", locationRepository.findAll());
         return "/index";
     }
-    @GetMapping("/admins/dashboard/{lastName}")
+    @GetMapping("/dashboard/{lastName}")
     public String admin(@PathVariable("lastName") String lastName, Model model){
         model.addAttribute("user", userRepository.findUserByLastName(lastName));
-        return "/admin/dashboard";
+        return "/dashboard";
     }
 
 }
