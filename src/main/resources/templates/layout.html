@@ -90,7 +90,7 @@
                                 <div class="dropdown-content-body">
                                     <ul>
                                         <li>
-                                            <a href="/./customers/list"><i class="icon-user"></i> <span>Profile</span></a>
+                                            <a th:href="@{/dashboard/{username}(username=${#request.remoteUser})}"><i class="icon-user"></i> <span>Profile</span></a>
                                         </li>
                                         <li>
                                             <a th:href="@{/logout}"><i class="icon-lock"></i> <span>Lock Screen</span></a>
