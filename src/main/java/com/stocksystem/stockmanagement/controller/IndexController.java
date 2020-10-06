@@ -18,14 +18,27 @@ public class IndexController {
     private LocationRepository locationRepository;
 
     @GetMapping("/")
+    public String home(Model model){
+        return "/home";
+    }
+    @GetMapping("/profile/{lastName}")
+    public String profile(@PathVariable("lastName") String lastName, Model model){
+        model.addAttribute("user", userRepository.findUserByLastName(lastName));
+        return "profile";
+    }
+    @GetMapping("/about")
+    public String about(Model model){
+        return "/about";
+    }
+    @GetMapping("/contactUs")
+    public String contactUs(Model model){
+        return "/contactUs";
+    }
+    @GetMapping("/index")
     public String index(Model model){
         model.addAttribute("locations", locationRepository.findAll());
+
         return "/index";
-    }
-    @GetMapping("/dashboard/{lastName}")
-    public String dashboard(@PathVariable("lastName") String lastName, Model model){
-        model.addAttribute("user", userRepository.findUserByLastName(lastName));
-        return "/dashboard";
     }
 
 }

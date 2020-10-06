@@ -30,22 +30,33 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/admin/**").hasRole("ADMIN")
+
+                .antMatchers("/customers/**").hasRole("ADMIN")
+                .antMatchers("/products/**").hasRole("ADMIN")
+                .antMatchers("/productTypes/**").hasRole("ADMIN")
+                .antMatchers("/purchases/**").hasRole("ADMIN")
+                .antMatchers("/roles/**").hasRole("ADMIN")
+                .antMatchers("/sales/**").hasRole("ADMIN")
+                .antMatchers("/suppliers/**").hasRole("ADMIN")
                 .antMatchers("/users/list").hasRole("ADMIN")
                 .antMatchers("/users/edit").hasRole("ADMIN")
                 .antMatchers("/users/assignRole").hasRole("ADMIN")
-                .antMatchers("/customer/**").hasRole("ADMIN")
 
                 .antMatchers("/anonymous*").anonymous()
                 .antMatchers("/").permitAll()
+                .antMatchers("/contactUs").permitAll()
+                .antMatchers("/layout").permitAll()
+                .antMatchers("/about").permitAll()
                 .antMatchers("/login*").permitAll()
                 .antMatchers("/users/create").permitAll()
                 .antMatchers("/users/register").permitAll()
+
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
                 .loginPage("/login")
                 //.loginProcessingUrl("/perform_login")
-                .defaultSuccessUrl("/", true)
+                .defaultSuccessUrl("/index", true)
                 //.failureUrl("/login.html?error=true")
                 //.failureHandler(authenticationFailureHandler())
                 .and()
@@ -59,7 +70,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(WebSecurity web) throws Exception {
         web
                 .ignoring()
-                .antMatchers("/static/**", "/css/**", "/js/**", "/images/**", "/icons/**","/plugins/**");
+                .antMatchers("/static/**", "/css/**", "/js/**", "/images/**", "/icons/**","/plugins/**", "/fonts/**");
     }
 
     @Bean

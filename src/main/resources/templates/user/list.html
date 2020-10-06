@@ -37,6 +37,7 @@
                                             <th scope="col">Last Name</th>
                                             <th scope="col">First Name</th>
                                             <th scope="col">Email</th>
+                                            <th scope="col">Address</th>
                                             <th scope="col">Action</th>
                                             <th scope="col">Action</th>
                                         </tr>
@@ -47,6 +48,7 @@
                                             <td th:text="${row.getLastName()}"></td>
                                             <td th:text="${row.getFirstName()}"></td>
                                             <td th:text="${row.getEmail()}"></td>
+                                            <td th:text="${row.getAddress()}"></td>
                                             <td><a th:href="@{/users/edit/{id}(id=${row.getId()})}"><button class="btn btn-warning btn"><i class="fa fa-pencil color-muted m-r-5"></i></button></a> | <a data-toggle="modal" data-target="#staticBackdrop" th:href="@{/users/delete/{id}(id=${row.getId()})}"><button class="btn btn-warning btn"><i class="fa fa-close color-danger"></i></button></a></td>
                                             <td><a th:href="@{/users/assignRole/{id}(id=${row.getId()})}"><button type="submit" class="btn btn-success" name="button">Assign Role</button></a></td>
                                         </tr>

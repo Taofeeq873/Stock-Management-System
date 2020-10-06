@@ -65,6 +65,7 @@ public class UserController {
             u.setLastName(registerUserModel.getLastName());
             u.setFirstName(registerUserModel.getFirstName());
             u.setEmail(registerUserModel.getEmail());
+            u.setEmail(registerUserModel.getAddress());
             u.setPassword(passwordEncoder.encode(registerUserModel.getPassword()));
             Optional<Role> optionalRole= roleRepository.findByName("USER");
             if(optionalRole.isPresent()) {
@@ -87,7 +88,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "/users/update", method = RequestMethod.POST)
-    public String updateUser(Model model, @RequestParam long id, @RequestParam String lastName, @RequestParam String firstName, @RequestParam String email) {
+    public String updateUser(Model model, @RequestParam long id, @RequestParam String lastName, @RequestParam String firstName, @RequestParam String email, @RequestParam String address) {
 
         //BeanUtils.copyProperties(aircraft, "id");
 
@@ -95,6 +96,8 @@ public class UserController {
         user.setLastName(lastName);
         user.setFirstName(firstName);
         user.setEmail(email);
+        user.setAddress(address);
+
         userRepository.save(user);
 
         return "redirect:/users/list";

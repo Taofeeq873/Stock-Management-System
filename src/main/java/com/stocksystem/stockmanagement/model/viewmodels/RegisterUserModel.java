@@ -7,6 +7,8 @@ public class RegisterUserModel {
     private String email;
     private String firstName;
     private String lastName;
+    private String address;
+
 
     public String getUserName() {
         return userName;
@@ -54,5 +56,13 @@ public class RegisterUserModel {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 }

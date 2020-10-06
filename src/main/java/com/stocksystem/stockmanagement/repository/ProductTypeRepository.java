@@ -11,4 +11,5 @@ public interface ProductTypeRepository extends CrudRepository<ProductType, Integ
     ProductType findProductTypeByName(String name);
     List<ProductType> findProductTypeByNameGreaterThanEqual(String name);
 
+
 }

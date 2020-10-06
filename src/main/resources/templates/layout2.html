@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+        <title>Sirs-Inventory</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="utf-8">
+        <title layout:title-pattern="$CONTENT_TITLE - $LAYOUT_TITLE">Sirs-Inventory</title>
+        <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+        <!-- bootstrap-css -->
+        <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/bootstrap.css}" >
+        <!--// bootstrap-css -->
+        <!-- Favicon icon -->
+        <link rel="icon" type="image/png" sizes="16x16" th:href="@{/images/l-white.png}">
+        <!--// Favicon icon -->
+        <!-- css -->
+        <link rel="stylesheet"  type="text/css" media="all" th:href="@{/css/styles.css}" >
+        <!--// css -->
+        <!-- font-awesome icons -->
+        <link  rel="stylesheet" th:href="@{/css/font-awesome.css}">
+        <!-- //font-awesome icons -->
+        <!-- font -->
+        <link th:href="@{//fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i}" rel="stylesheet">
+        <!-- //font -->
+        <script src="/js/jquery-2.2.3.min.js"></script>
+        <script src="/js/bootstrap.js"></script>
+
+</head>
+
+<body>
+
+    <div class="w3-banner jarallax">
+        <div class="wthree-different-dot">
+            <div class="w3layouts-header-top">
+                <div class="container">
+                    <div class="w3-header-top-grids">
+                        <div class="w3-header-top-left">
+                            <p><i class="fa fa-volume-control-phone" aria-hidden="true"></i> +234 812 432 6374</p>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                </div>
+            </div>
+            <div class="head">
+                <div class="container">
+                    <div class="navbar-top">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <div class="navbar-brand logo ">
+                                <h1><a href="index.html">Sirs-Inventory</a></h1>
+                            </div>
+
+                        </div>
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav link-effect-4">
+                                <li><a th:href="@{/}">Home</a></li>
+                                <li><a th:href="@{about}">About</a></li>
+                                <li><a th:href="@{contactUs}">Contact Us</a></li>
+                                <li><a href="/./users/create">Sign Up</a></li>
+                                <li><a th:href="@{index}">DashBoard</a></li>
+                            </ul>
+                        </div><!-- /.navbar-collapse -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--**********************************
+        Content body start
+    ***********************************-->
+
+    <!-- Content Section -->
+    <section layout:fragment="content">
+        <p>This is filled by the content template.</p>
+    </section>
+
+    <!--**********************************
+        Content body end
+    ***********************************-->
+
+
+    <!-- footer -->
+    <div class="agileits-w3layouts-footer">
+        <div class="container">
+            <div class="col-md-6 w3-agile-grid">
+                <h5>About Us</h5>
+                <p>Designed to help retailers track their inventory through their product life cycle.
+                    We strongly believe in the power of simplicity through design and work tirelessly to ensure every feature we create meets our high standards. </p>
+            </div>
+
+            <div class="col-md-6 w3-agile-grid">
+                <h5>Address</h5>
+                <div class="w3-address">
+                    <div class="w3-address-grid">
+                        <div class="w3-address-left">
+                            <i class="fa fa-phone" aria-hidden="true"></i>
+                        </div>
+                        <div class="w3-address-right">
+                            <h6>Phone Number</h6>
+                            <p>+234 812 432 6374</p>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                    <div class="w3-address-grid">
+                        <div class="w3-address-left">
+                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                        </div>
+                        <div class="w3-address-right">
+                            <h6>Email Address</h6>
+                            <p>Email :<a href="mailto:example@email.com"> azeeztaofeeq873@gmail.com</a></p>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                    <div class="w3-address-grid">
+                        <div class="w3-address-left">
+                            <i class="fa fa-map-marker" aria-hidden="true"></i>
+                        </div>
+                        <div class="w3-address-right">
+                            <h6>Location</h6>
+                            <p>CodelearnersHub, Nigeria.
+                                <span>Phone Number : +234 812 432 6374</span>
+                            </p>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+    <div class="copyright">
+        <div class="container">
+            <p>© 2020 Sirs-Inventory. All rights reserved | Design by <a href="#">Sirs</a></p>
+        </div>
+    </div>
+    <!-- //footer -->
+    <!-- ResponsiveTabs -->
+    <script src="/js/easyResponsiveTabs.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#horizontalTab').easyResponsiveTabs({
+                type: 'default', //Types: default, vertical, accordion
+                width: 'auto', //auto or any width like 600px
+                fit: true   // 100% fit in a container
+            });
+        });
+    </script>
+    <!-- //ResponsiveTabs -->
+
+    <script src="/js/jarallax.js"></script>
+    <script src="/js/SmoothScroll.min.js"></script>
+    <script type="text/javascript">
+        /* init Jarallax */
+        $('.jarallax').jarallax({
+            speed: 0.5,
+            imgWidth: 1366,
+            imgHeight: 768
+        })
+    </script>
+
+    <!-- Optional Section -->
+<!--<th:block layout:fragment="optional" />-->
+</body>
+
+</html>

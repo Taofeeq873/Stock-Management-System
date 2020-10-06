@@ -14,6 +14,8 @@ public class User {
 
     private String lastName;
     private String firstName;
+    private String address;
+
     private boolean disabled;
     private boolean accountExpired;
     private boolean accountLocked;
@@ -33,16 +35,18 @@ public class User {
         this.username = username;
     }
 
-    public User(String username, String lastName, String firstName){
+    public User(String username, String lastName, String firstName,String address){
         this.username = username;
         this.lastName = lastName;
         this.firstName = firstName;
+        this.address = address;
     }
 
-    public User(String email,String lastName, String firstName, String username, String password, boolean disabled, boolean accountExpired, boolean accountLocked, boolean credentialsExpired, List<Role> roles) {
+    public User(String email,String lastName, String firstName, String address, String username, String password, boolean disabled, boolean accountExpired, boolean accountLocked, boolean credentialsExpired, List<Role> roles) {
         this.email = email;
         this.lastName = lastName;
         this.firstName = firstName;
+        this.address = address;
         this.username = username;
         this.password = password;
         this.disabled = disabled;
@@ -82,6 +86,14 @@ public class User {
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getUsername() {

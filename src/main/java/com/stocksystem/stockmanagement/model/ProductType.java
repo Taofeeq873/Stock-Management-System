@@ -14,11 +14,14 @@ public class ProductType {
     @Column(unique = true,length = 50)
     private String name;
 
+//    @Lob
+//    private byte[] data;
+
     public ProductType(){
 
     }
 
-    public ProductType(@NotNull String name) {
+    public ProductType(@NotNull String name){
         this.name = name;
     }
 
@@ -33,4 +36,12 @@ public class ProductType {
     public void setName(String name) {
         this.name = name;
     }
+
+//    public byte[] getData() {
+//        return data;
+//    }
+//
+//    public void setData(byte[] data) {
+//        this.data = data;
+//    }
 }
