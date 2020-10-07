@@ -4,14 +4,13 @@ import com.stocksystem.stockmanagement.model.*;
 import com.stocksystem.stockmanagement.repository.ProductRepository;
 import com.stocksystem.stockmanagement.repository.ProductTypeRepository;
 import com.stocksystem.stockmanagement.repository.SupplierRepository;
+import org.apache.catalina.LifecycleState;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Set;
 
 @Controller
@@ -103,6 +102,4 @@ public class ProductController {
         productRepository.delete(product);
         return "redirect:/products/list";
     }
-
-
 }

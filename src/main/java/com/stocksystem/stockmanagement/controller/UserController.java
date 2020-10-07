@@ -65,7 +65,7 @@ public class UserController {
             u.setLastName(registerUserModel.getLastName());
             u.setFirstName(registerUserModel.getFirstName());
             u.setEmail(registerUserModel.getEmail());
-            u.setEmail(registerUserModel.getAddress());
+            u.setAddress(registerUserModel.getAddress());
             u.setPassword(passwordEncoder.encode(registerUserModel.getPassword()));
             Optional<Role> optionalRole= roleRepository.findByName("USER");
             if(optionalRole.isPresent()) {
