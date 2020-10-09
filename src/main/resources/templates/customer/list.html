@@ -53,6 +53,9 @@
                                                         <td th:text="${row.getAddress()}"></td>
                                                         <td th:text="${row.getEmail()}"></td>
                                                         <td><a th:href="@{/customers/edit/{id}(id=${row.getId()})}"><button class="btn btn-warning btn"><i class="fa fa-pencil color-muted m-r-5"></i></button></a></td>
+
+<!--                                                    <td><a th:href="@{/customers/delete/{id}(id=${row.getId()})}"><button class="btn btn-warning btn sweetalert m-t-30 sweet-success-cancel"><i class="fa fa-close color-danger"></i></button></a></td>-->
+
                                                         <td><a data-toggle="modal" data-target="#staticBackdrop" th:attr="data-target='#staticBackdrop'+${row.getId()}"><button class="btn btn-warning btn"><i class="fa fa-close color-danger"></i></button></a></td>
 
                                                         <div class="modal fade" th:id="staticBackdrop+${row.getId()}" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">

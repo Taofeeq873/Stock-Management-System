@@ -22,15 +22,63 @@
 
             <div class="container-fluid mt-3">
 
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="card-title">
+                                    <h3>Product Details</h3>
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <tbody>
+                                        <tr>
+                                            <td><h5>All Item Group:</h5></td>
+                                            <td><span th:text="${count}"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td><h5>All Item:</h5></td>
+                                            <td><h5></h5></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /# column -->
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="card-title">
+                                    <h3>Customer Details</h3>
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <tbody>
+                                        <tr>
+                                            <td><h5>All Customers:</h5></td>
+                                            <td><h5> <span></span></h5></td>
+                                        </tr>
+                                        <tr>
+                                            <td><h5>Total Sales:</h5></td>
+                                            <td><h5></h5></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /# column -->
+                </div>
+
                 <hr class="my-2">
 
                 <div class="row">
                     <div class="col-12 m-b-30">
-                        <h4 class="d-inline">Top Selling Products</h4>
+                        <h3 class="d-inline">Top Selling Products</h3>
                         <p class="text-muted"></p>
-
-                        <hr class="my-2">
-
                         <div class="row">
                             <div class="col-md-6 col-lg-3">
                                 <div class="card">
@@ -100,102 +148,28 @@
                                 </div>
                             </div>
                         </div>
-
-
                     </div>
                 </div>
 
-                <div class="row">
-                        <div class="row">
-                            <div class="col-md-6 col-lg-3">
-                                <div class="card">
-                                    <div class="card-header bg-white">
-                                        <h5 class="card-title">Designed Notes</h5>
-                                        <h6 class="card-subtitle mb-2 text-muted">$400</h6>
-                                    </div>
-                                    <img class="img-fluid" src="/images/big/gallery-4.png" alt="">
-                                    <div class="card-body">
-                                        <p class="card-text">Apple's Designed Notes 13-inch MacBook Pro is $400 off at Sirs in pre-Prime Our laptop deal.</p>
-                                    </div>
-                                    <div class="card-footer">
-                                        <p class="card-text d-inline"><small class="text-muted"></small>
-                                        </p><a href="#" class="card-link float-right" data-toggle="modal" data-target="#staticBackdrop"><small>Details</small></a>
-                                    </div>
-                                </div>
+                <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
                             </div>
-                            <!-- End Col -->
-                            <div class="col-md-6 col-lg-3">
-                                <div class="card">
-                                    <div class="card-header bg-white">
-                                        <h5 class="card-title">Wireless keyboard/Mouse</h5>
-                                        <h6 class="card-subtitle mb-2 text-muted">$432</h6>
-                                    </div>
-                                    <img class="img-fluid" src="/images/big/gallery-6.png" alt="">
-                                    <div class="card-body">
-                                        <p class="card-text">Apple's 2020 13-inch Keyboard Pro is $432 off at Sirs in pre-Prime Our laptop deal.</p>
-                                    </div>
-                                    <div class="card-footer">
-                                        <p class="card-text d-inline"><small class="text-muted"></small>
-                                        </p><a href="#" class="card-link float-right" data-toggle="modal" data-target="#staticBackdrop"><small>Details</small></a>
-                                    </div>
-                                </div>
+                            <div class="modal-body">
+                                <h4 class="d-inline justify-content-center">Sorry.... You can't access it here</h4>
+                                <p class="text-muted justify-content-center">check out for it on your<a href="/./products/list"> Item List </a></p>
                             </div>
-                            <!-- End Col -->
-                            <div class="col-md-6 col-lg-3">
-                                <div class="card">
-                                    <div class="card-header bg-white">
-                                        <h5 class="card-title">Uncommon Flower Vase</h5>
-                                        <h6 class="card-subtitle mb-2 text-muted">$987</h6>
-                                    </div>
-                                    <img class="img-fluid" src="/images/big/gallery-1.png" alt="">
-                                    <div class="card-body">
-                                        <p class="card-text">Foldable Natural Seagrass Ceramic Storage Pot Garden Flower Vase Hanging Basket.</p>
-                                    </div>
-                                    <div class="card-footer">
-                                        <p class="card-text d-inline"><small class="text-muted"></small>
-                                        </p><a href="#" class="card-link float-right" data-toggle="modal" data-target="#staticBackdrop"><small>Details</small></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Col -->
-                            <div class="col-md-6 col-lg-3">
-                                <div class="card">
-                                    <div class="card-header bg-white">
-                                        <h5 class="card-title">Apple Laptop</h5>
-                                        <h6 class="card-subtitle mb-2 text-muted">$199</h6>
-                                    </div>
-                                    <img class="img-fluid" src="/images/big/gallery-5.png" alt="">
-                                    <div class="card-body">
-                                        <p class="card-text">Apple's 2020 13-inch MacBook Pro is $199 off at Sirs in pre-Prime Our laptop deal</p>
-                                    </div>
-                                    <div class="card-footer">
-                                        <p class="card-text d-inline"><small class="text-muted"></small>
-                                        </p><a href="#" class="card-link float-right" data-toggle="modal" data-target="#staticBackdrop"><small>Details</small></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <h4 class="d-inline justify-content-center">Sorry.... You can't access it here</h4>
-                                    <p class="text-muted justify-content-center">check out for it on your<a href="/./products/list"> Item List </a></p>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                             </div>
                         </div>
                     </div>
-
                 </div>
+
 
                 <hr class="my-2">
 

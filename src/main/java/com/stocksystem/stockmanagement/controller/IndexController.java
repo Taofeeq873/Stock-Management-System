@@ -1,6 +1,7 @@
 package com.stocksystem.stockmanagement.controller;
 
 import com.stocksystem.stockmanagement.repository.LocationRepository;
+import com.stocksystem.stockmanagement.repository.ProductTypeRepository;
 import com.stocksystem.stockmanagement.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,9 +14,11 @@ public class IndexController {
 
     @Autowired
     UserRepository userRepository;
-
     @Autowired
-    private LocationRepository locationRepository;
+    ProductTypeRepository productTypeRepository;
+
+//    @Autowired
+//    private LocationRepository locationRepository;
 
     @GetMapping("/")
     public String home(Model model){
@@ -35,9 +38,10 @@ public class IndexController {
         return "/contactUs";
     }
     @GetMapping("/index")
-    public String index(Model model){
-        model.addAttribute("locations", locationRepository.findAll());
 
+    public String index(Model model){
+        int count = productTypeRepository.countAllProductType();
+        model.addAttribute("count",productTypeRepository.countAllProductType());
         return "/index";
     }
 

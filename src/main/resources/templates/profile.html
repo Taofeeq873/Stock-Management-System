@@ -34,36 +34,39 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
+                                <div class="card-title">
+                                    <h4>User Details</h4>
+                                </div>
                                 <div class="table-responsive">
-                                        <table class="table table-hover table-striped">
-                                            <thead>
-                                                <tr>
-                                                    <td>Id:</td>
-                                                    <td th:text="${user.getId()}"></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>First Name:</td>
-                                                    <td th:text="${user.getFirstName()}"></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Last Name :</td>
-                                                    <td th:text="${user.getLastName()}"></td>
-                                                </tr>
-                                            </thead>
-                                            <thead>
-                                                <tr>
-                                                    <td>Email:</td>
-                                                    <td th:text="${user.getEmail()}"></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Username:</td>
-                                                    <td th:text="${user.getUsername()}"></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Address:</td>
-                                                    <td th:text="${user.getAddress()}"></td>
-                                                </tr>
-                                            </thead>
+                                    <table class="table header-border table-hover verticle-middle">
+                                        <thead>
+                                            <tr>
+                                                <td>Id:</td>
+                                                <td th:text="${user.getId()}"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>First Name:</td>
+                                                <td th:text="${user.getFirstName()}"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Last Name :</td>
+                                                <td th:text="${user.getLastName()}"></td>
+                                            </tr>
+                                        </thead>
+                                        <thead>
+                                            <tr>
+                                                <td>Email:</td>
+                                                <td th:text="${user.getEmail()}"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Username:</td>
+                                                <td th:text="${user.getUsername()}"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Address:</td>
+                                                <td th:text="${user.getAddress()}"></td>
+                                            </tr>
+                                        </thead>
                                     </table>
                                 </div>
                             </div>

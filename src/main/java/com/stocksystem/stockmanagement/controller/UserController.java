@@ -75,6 +75,8 @@ public class UserController {
                 u.setRoles(roleList);
             }
             userRepository.save(u);
+//            redirectAttributes.addAttribute("success","You have successfully registered");
+//            redirectAttributes.addAttribute("successful",true);
             //redirectAttributes.addAttribute("error","");
             return "redirect:/login";
        }
