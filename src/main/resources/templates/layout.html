@@ -92,11 +92,10 @@
                                         <li>
                                             <a th:href="@{/profile/{username}(username=${#request.remoteUser})}"><i class="icon-user"></i> <span>Profile</span></a>
                                         </li>
-                                        <li>
-                                            <a th:href="@{/logout}"><i class="icon-lock"></i> <span>Lock Screen</span></a>
-                                        </li>
                                         <hr class="my-2">
-                                        <li><a th:href="@{/logout}"><i class="icon-key"></i> <span>Logout</span></a></li>
+                                        <li>
+                                            <a th:href="@{/logout}"><i class="icon-key"></i> <span>Logout</span></a>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
@@ -174,15 +173,15 @@
                             <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Supplier</a>
                                 <ul aria-expanded="false">
                                     <li><a href="/./suppliers/create">Create Supplier</a></li>
-                                    <li><a href="/./suppliers/list">Available Suppliers</a></li>
+                                    <li><a href="/./suppliers/list">List of Suppliers</a></li>
                                 </ul>
                             </li>
                         </ul>
                         <ul aria-expanded="false">
-                            <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Purchased</a>
+                            <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Purchase</a>
                                 <ul aria-expanded="false">
-                                    <li><a href="/./purchases/create">Create Purchased</a></li>
-                                    <li><a href="/./purchases/list">List Purchased</a></li>
+                                    <li><a href="/./purchases/create">Create Purchase</a></li>
+                                    <li><a href="/./purchases/list">List of Purchase</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -197,7 +196,7 @@
                             <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">User</a>
                                 <ul aria-expanded="false">
                                     <li><a href="/./users/create">Create User</a></li>
-                                    <li><a href="/./users/list">All Users</a></li>
+                                    <li><a href="/./users/list">List of Users</a></li>
                                     <li><a href="/./users/list">Assign Roles</a></li>
                                 </ul>
                             </li>
@@ -205,17 +204,6 @@
                         </ul>
                     </li>
 
-
-                    <li>
-                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon-notebook menu-icon"></i><span class="nav-text">Login</span>
-                        </a>
-                        <ul aria-expanded="false">
-                            <li><a th:href="@{/logout}">Login</a></li>
-                            <li><a href="/./users/create">Register</a></li>
-                            <li><a th:href="@{/logout}">Lock Screen</a></li>
-                        </ul>
-                    </li>
 
                     <hr class="my-2">
 
@@ -250,7 +238,7 @@
          <!--**********************************
                Footer start
           ***********************************-->
-        <div class="footer">
+        <div class="footer ">
             <div class="copyright">
                 <p>Copyright &copy; Designed & Developed by <a href="#">Sirs</a> 2020</p>
             </div>
@@ -258,7 +246,6 @@
         <!--**********************************
             Footer end
         ***********************************-->
-
 
     </div>
     <!--**********************************

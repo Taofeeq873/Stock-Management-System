@@ -28,7 +28,7 @@
                     <div class="col-xxl-12">
                         <div class="card ">
                             <div class="card-body">
-                                <h4 class="card-title">Products List</h4>
+                                <h4 class="card-title">Item List</h4>
                                 <div class="table-responsive">
                                     <table class="table table-bordered table-striped verticle-middle">
                                         <thead>
@@ -37,7 +37,7 @@
                                             <th scope="col">Name</th>
                                             <th scope="col">Product_Type</th>
                                             <th scope="col">Quantity</th>
-                                            <th scope="col">Status</th>
+                                            <th scope="col">Description</th>
                                             <th scope="col">Supplier</th>
                                             <th scope="col">Price</th>
                                             <th scope="col">Edit</th>
@@ -50,7 +50,7 @@
                                                 <td th:text="${row.getName()}"></td>
                                                 <td th:text="${row.getProductType().getName()}"></td>
                                                 <td th:text="${row.getQuantity()}"></td>
-                                                <td th:text="${row.getStatus()}"></td>
+                                                <td th:text="${row.getDescription()}"></td>
                                                 <td th:text="${row.getSupplier().getCompanyName()}"></td>
                                                 <td th:text="${row.getPrice()}"></td>
 

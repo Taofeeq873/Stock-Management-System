@@ -38,9 +38,6 @@
                             <a th:href="@{/}"><img src="/images/mylogos.png" alt="" /></a>
                         </div>
 
-                        <div class="w3-header-top-right">
-                            <p><i class="fa fa-volume-control-phone" aria-hidden="true"></i> +234 812 432 6374</p>
-                        </div>
                         <div class="clearfix"> </div>
                     </div>
                 </div>
@@ -56,9 +53,6 @@
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                             </button>
-<!--                            <div class="navbar-brand logo">-->
-<!--                                <h1><a th:href="@{/}">Sirs-Inventory</a></h1>-->
-<!--                            </div>-->
 
                         </div>
 
@@ -69,7 +63,7 @@
                                 <li><a th:href="@{about}">About</a></li>
                                 <li><a th:href="@{contactUs}">Contact Us</a></li>
                                 <li><a href="/./users/create">Sign Up</a></li>
-                                <li><a th:href="@{index}">DashBoard</a></li>
+                                <li><a th:href="@{index}">Login</a></li>
                             </ul>
                         </div><!-- /.navbar-collapse -->
                     </div>
@@ -89,7 +83,7 @@
                                     auto: true,
                                     pager: true,
                                     nav: true,
-                                    speed: 1000,
+                                    speed: 800,
                                     namespace: "callbacks",
                                     before: function () {
                                         $('.events').append("<li>before event fired.</li>");
@@ -105,28 +99,19 @@
                                 <li>
                                     <div class="slider-info">
                                         <h3>Sirs-Inventory</h3>
-                                        <p >Inventory management software for growing businesses.</p>
-                                        <div class="more-button">
-                                            <a href="#" data-toggle="modal" data-target="#myModal">Read More</a>
-                                        </div>
+                                        <p>Inventory management software for growing businesses.</p>
                                     </div>
                                 </li>
                                 <li>
                                     <div class="slider-info">
-                                        <h3>Sirs-Inventory</h3>
-                                        <p>Inventory management software for growing businesses.</p>
-                                        <div class="more-button">
-                                            <a href="#" data-toggle="modal" data-target="#myModal">Read More</a>
-                                        </div>
+                                        <h3>Your Inventory</h3>
+                                        <p>You Will Never Regret It.</p>
                                     </div>
                                 </li>
                                 <li>
                                     <div class="slider-info">
-                                        <h3>Sirs-Inventory</h3>
-                                        <p>Inventory management software for growing businesses.</p>
-                                        <div class="more-button">
-                                            <a href="#" data-toggle="modal" data-target="#myModal">Read More</a>
-                                        </div>
+                                        <h3>My Inventory</h3>
+                                        <p>Always Reliable To Save Your Items With Us.</p>
                                     </div>
                                 </li>
                             </ul>
@@ -138,27 +123,6 @@
         </div>
     </div>
     <!-- //w3-banner -->
-    <!-- modal -->
-    <div class="modal about-modal fade" id="myModal" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">Sirs-Inventory</h4>
-                </div>
-                <div class="modal-body">
-                    <div class="agileits-w3layouts-info">
-                        <img src="/images/11067734.jpg" alt="" />
-                        <p>Inventory Now is built and maintained by a small team of developers in Charleston, SC. It was originally created in 2009 (running on iOS v3!) as a lightweight tool for ticket brokers to manage their ticket inventory. Through the years, its been great to see so many people use the app to do SO much more!
-                            Recently, after years of gathering support and feedback, we completely redesigned and rewrote the entire app in order to create a platform that would allow us to scale and add all of the features that you told us you wanted. Today, we are delivering the most robust, most customizable and (most importantly) the most simple solution available.
-                            We strongly believe in the power of simplicity through design and work tirelessly to ensure every feature we create meets our high standards.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- //modal -->
     <!-- welcome -->
     <div class="welcome">
         <div class="container">

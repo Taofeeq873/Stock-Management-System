@@ -49,13 +49,13 @@ public class ProductController {
         return "product/create";
     }
     @RequestMapping(value = "/products/add",method = RequestMethod.POST)
-    public String add(Model model, @RequestParam String name, @RequestParam String productType, @RequestParam int quantity,@RequestParam String status,@RequestParam String supplier, @RequestParam double price){
+    public String add(Model model, @RequestParam String name, @RequestParam String productType, @RequestParam int quantity,@RequestParam String description,@RequestParam String supplier, @RequestParam double price){
 
         ProductType product_Type = productTypeRepository.findProductTypeByName(productType);
 
         Supplier suppliers = supplierRepository.findSupplierByCompanyName(supplier);
 
-        Product product = new Product(name,product_Type,quantity,status,suppliers,price);
+        Product product = new Product(name,product_Type,quantity,description,suppliers,price);
 
         productRepository.save(product);
 
@@ -74,7 +74,7 @@ public class ProductController {
     }
 
     @RequestMapping(value = "/products/update", method = RequestMethod.POST)
-    public String updateProduct(Model model, @RequestParam int id, @RequestParam String name,@RequestParam String productType, @RequestParam int quantity,@RequestParam String status,@RequestParam double price) {
+    public String updateProduct(Model model, @RequestParam int id, @RequestParam String name,@RequestParam String productType, @RequestParam int quantity,@RequestParam String description,@RequestParam double price) {
 
         //BeanUtils.copyProperties(aircraft, "id");
 
@@ -84,7 +84,7 @@ public class ProductController {
 
         product.setName(name);
         product.setQuantity(quantity);
-        product.setStatus(status);
+        product.setDescription(description);
         product.setProductType(product_Type);
         product.setPrice(price);
 

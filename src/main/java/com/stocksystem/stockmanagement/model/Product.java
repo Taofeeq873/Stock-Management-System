@@ -21,7 +21,7 @@ public class Product {
 
     private int quantity;
 
-    private String status;
+    private String description;
 
     @ManyToOne
     private Supplier supplier;
@@ -32,11 +32,11 @@ public class Product {
 
     }
 
-    public Product(String name, ProductType productType, int quantity,String status,Supplier supplier,double price) {
+    public Product(String name, ProductType productType, int quantity,String description,Supplier supplier,double price) {
         this.name = name;
         this.productType = productType;
         this.quantity = quantity;
-        this.status = status;
+        this.description = description;
         this.supplier = supplier;
         this.price = price;
     }
@@ -69,12 +69,12 @@ public class Product {
         this.productType = productType;
     }
 
-    public String getStatus() {
-        return status;
+    public String getDescription() {
+        return description;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Supplier getSupplier() {
