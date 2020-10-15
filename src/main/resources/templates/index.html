@@ -32,13 +32,13 @@
                                 <div class="table-responsive">
                                     <table class="table">
                                         <tbody>
-                                        <tr>
-                                            <td><h5>All Item Group:</h5></td>
-                                            <td><span th:text="${count}"></span></td>
+                                        <tr th:object="${allAvailableProducts}">
+                                            <td><h5>All Item In Stock:</h5></td>
+                                            <td th="${allAvailableProducts}"><h5></h5></td>
                                         </tr>
-                                        <tr>
+                                        <tr th:object="${allProducts}">
                                             <td><h5>All Item:</h5></td>
-                                            <td><h5></h5></td>
+                                            <td th:text="${allProducts}"><h5></h5></td>
                                         </tr>
                                         </tbody>
                                     </table>

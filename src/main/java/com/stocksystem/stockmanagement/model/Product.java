@@ -23,22 +23,32 @@ public class Product {
 
     private String description;
 
-    @ManyToOne
-    private Supplier supplier;
+//    @ManyToOne
+    private String supplier;
 
     private double price;
+
+    private Date dateCreated;
+
+    @ManyToOne
+    private AvailableProduct availableProduct;
+
+    private int productQuantity;
 
     public Product(){
 
     }
 
-    public Product(String name, ProductType productType, int quantity,String description,Supplier supplier,double price) {
+    public Product(String name, ProductType productType, int quantity,String description,String supplier,double price, Date dateCreated, AvailableProduct availableProduct, int productQuantity) {
         this.name = name;
         this.productType = productType;
         this.quantity = quantity;
         this.description = description;
         this.supplier = supplier;
         this.price = price;
+        this.dateCreated = dateCreated;
+        this.availableProduct = availableProduct;
+        this.productQuantity = productQuantity;
     }
 
     public int getId() {
@@ -77,11 +87,11 @@ public class Product {
         this.description = description;
     }
 
-    public Supplier getSupplier() {
+    public String getSupplier() {
         return supplier;
     }
 
-    public void setSupplier(Supplier supplier) {
+    public void setSupplier(String supplier) {
         this.supplier = supplier;
     }
 
@@ -91,6 +101,30 @@ public class Product {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public Date getDateCreated() {
+        return dateCreated;
+    }
+
+    public void setDateCreated(Date dateCreated) {
+        this.dateCreated = dateCreated;
+    }
+
+    public AvailableProduct getAvailableProduct() {
+        return availableProduct;
+    }
+
+    public void setAvailableProduct(AvailableProduct availableProduct) {
+        this.availableProduct = availableProduct;
+    }
+
+    public int getProductQuantity() {
+        return productQuantity;
+    }
+
+    public void setProductQuantity(int productQuantity) {
+        this.productQuantity = productQuantity;
     }
 }
 

@@ -1,8 +1,10 @@
 package com.stocksystem.stockmanagement.controller;
 
+import com.stocksystem.stockmanagement.model.AvailableProduct;
 import com.stocksystem.stockmanagement.model.Product;
 import com.stocksystem.stockmanagement.model.Purchase;
 import com.stocksystem.stockmanagement.model.Supplier;
+import com.stocksystem.stockmanagement.repository.AvailableProductRepository;
 import com.stocksystem.stockmanagement.repository.ProductRepository;
 import com.stocksystem.stockmanagement.repository.PurchaseRepository;
 import com.stocksystem.stockmanagement.repository.SupplierRepository;
@@ -22,16 +24,19 @@ public class PurchaseController {
     final PurchaseRepository purchaseRepository;
     final ProductRepository productRepository;
     final SupplierRepository supplierRepository;
+    final AvailableProductRepository availableProductRepository;
 
-    public PurchaseController(PurchaseRepository purchaseRepository, ProductRepository productRepository, SupplierRepository supplierRepository) {
+    public PurchaseController(PurchaseRepository purchaseRepository, ProductRepository productRepository, SupplierRepository supplierRepository, AvailableProductRepository availableProductRepository) {
         this.purchaseRepository = purchaseRepository;
         this.productRepository = productRepository;
         this.supplierRepository = supplierRepository;
+        this.availableProductRepository = availableProductRepository;
     }
 
     @RequestMapping(value = "/purchases/list", method = RequestMethod.GET)
     public String purchase(Model model){
         model.addAttribute("purchases",purchaseRepository.findAll());
+        model.addAttribute("allPurchases", productRepository.count());
         return "purchase/list";
     }
 
@@ -46,18 +51,22 @@ public class PurchaseController {
     }
 
     @RequestMapping(value = "/purchases/add",method = RequestMethod.POST)
-    public String add(Model model, @RequestParam String supplier, @RequestParam String product, @RequestParam double price,@RequestParam int quantity, @RequestParam String datePurchased) throws ParseException {
+    public String add(Model model, @RequestParam String supplier, @RequestParam String name, @RequestParam double price,@RequestParam int quantity) {
 
-        Product products = productRepository.findProductByName(product);
+//        Product products = productRepository.findProductByName(product);
 
         Supplier suppliers = supplierRepository.findSupplierByCompanyName(supplier);
 
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm");
-        //System.out.println(takeOffTime);
-        Date date_purchased = formatter.parse(datePurchased);
 
-        Purchase purchase = new Purchase(suppliers,products,price,quantity,date_purchased);
+        long millis = System.currentTimeMillis();
+        Date datePurchased = new Date(millis);
+
+        Purchase purchase = new Purchase(suppliers,name,price,quantity,datePurchased);
         purchaseRepository.save(purchase);
+
+        AvailableProduct availableProduct = new AvailableProduct(name,supplier,quantity,datePurchased);
+        availableProductRepository.save(availableProduct);
+
 
         return "redirect:/purchases/list";
     }
@@ -71,7 +80,7 @@ public class PurchaseController {
     }
 
     @RequestMapping(value = "/purchases/update", method = RequestMethod.POST)
-    public String updatePurchase(Model model, @RequestParam int id, @RequestParam double price,@RequestParam int quantity, @RequestParam String datePurchased) throws ParseException {
+    public String updatePurchase(Model model, @RequestParam int id, @RequestParam String name, @RequestParam double price,@RequestParam int quantity, @RequestParam String datePurchased) throws ParseException {
 
         //BeanUtils.copyProperties(aircraft, "id");
 
@@ -81,6 +90,7 @@ public class PurchaseController {
         //System.out.println(takeOffTime);
         Date date_purchased = formatter.parse(datePurchased);
 
+        purchase.setName(name);
         purchase.setPrice(price);
         purchase.setQuantity(quantity);
         purchase.setDatePurchased(date_purchased);

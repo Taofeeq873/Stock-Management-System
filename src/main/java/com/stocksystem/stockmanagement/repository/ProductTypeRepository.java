@@ -13,6 +13,9 @@ public interface ProductTypeRepository extends CrudRepository<ProductType, Integ
     ProductType findProductTypeByName(String name);
     List<ProductType> findProductTypeByNameGreaterThanEqual(String name);
 
-    @Query(value = "SELECT COUNT(*) FROM product_type", nativeQuery = true)
-    int countAllProductType();
+//    @Query(value = "SELECT COUNT(*) FROM product_type", nativeQuery = true)
+//    int countAllProductType();
+
+//    @Query(value = "SELECT COUNT(*) FROM product_type", nativeQuery = true)
+//    int allProductTypes();
 }

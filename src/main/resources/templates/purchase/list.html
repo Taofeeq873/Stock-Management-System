@@ -35,25 +35,26 @@
                                         <tr>
                                             <th scope="col">Id</th>
                                             <th scope="col">Supplier</th>
-                                            <th scope="col">Product</th>
+                                            <th scope="col">Product Name</th>
                                             <th scope="col">Quantity</th>
                                             <th scope="col">Price</th>
                                             <th scope="col">Date Purchased</th>
                                             <th scope="col">Edit</th>
-                                            <th scope="col"> Delete</th>
+                                            <th scope="col">Delete</th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                         <tr th:each="row : *{purchases}">
                                             <td th:text="${row.getId()}"></td>
                                             <td th:text="${row.getSupplier().getCompanyName()}"></td>
-                                            <td th:text="${row.getProduct().getName()}"></td>
+                                            <td th:text="${row.getName()}"></td>
                                             <td th:text="${row.getQuantity()}"></td>
-                                            <td th:text="${row.getPrice()}"></td>
+                                            <td th:text="${row.getPrice()} + '0'"></td>
                                             <td th:text="${row.getDatePurchased()}"></td>
 
                                             <td><a th:href="@{/purchases/edit/{id}(id=${row.getId()})}"><button class="btn btn-warning btn"><i class="fa fa-pencil color-muted m-r-5"></i></button></a></td>
                                             <td><a data-toggle="modal" data-target="#staticBackdrop" th:attr="data-target='#staticBackdrop'+${row.getId()}"><button class="btn btn-warning btn"><i class="fa fa-close color-danger"></i></button></a></td>
+
 
                                             <div class="modal fade" th:id="staticBackdrop+${row.getId()}" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                                 <div class="modal-dialog">
@@ -79,6 +80,13 @@
                                         </tbody>
                                     </table>
                                 </div>
+
+                                <div th:if="${allPurchases}" class="mt-3">
+                                    <span>We have the total of</span>
+                                    <span class="alert alert-info text-success" th:text="${allPurchases}"></span>
+                                    <span>Items Purchased.</span>
+                                </div>
+
                             </div>
                         </div>
                     </div>

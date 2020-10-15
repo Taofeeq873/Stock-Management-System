@@ -33,15 +33,18 @@ public class SaleController {
     @RequestMapping(value = "/sales/list", method = RequestMethod.GET)
     public String sale(Model model){
         model.addAttribute("sales",saleRepository.findAll());
+        model.addAttribute("allSales", saleRepository.count());
         return "sale/list";
     }
 
-    @RequestMapping(value = "/sales/create", method = RequestMethod.GET)
-    public String create(Model model){
+    @RequestMapping(value = "/sales/create/{id}", method = RequestMethod.GET)
+    public String create(@PathVariable("id") int id, Model model){
 
         model.addAttribute("customer", customerRepository.findAll());
 
-        model.addAttribute("product", productRepository .findAll());
+        model.addAttribute("product", productRepository .findById(id).get());
+
+//        model.addAttribute("product", productRepository .findAll());
 
         model.addAttribute("user", userRepository .findAll());
 
@@ -49,52 +52,57 @@ public class SaleController {
     }
 
     @RequestMapping(value = "/sales/add",method = RequestMethod.POST)
-    public String add(Model model, @RequestParam String customer, @RequestParam String product,@RequestParam String dateSold, @RequestParam double price, @RequestParam int quantity, @RequestParam String user) throws ParseException {
+    public String add(Model model, @RequestParam int id, @RequestParam String customer, @RequestParam double price, @RequestParam int quantity, @RequestParam String user, @RequestParam double totalPrice, @RequestParam int productQuantity){
 
-        Product products = productRepository.findProductByName(product);
+//        Product products = productRepository.findProductByName(product);
+
+        Product product = productRepository.findById(id).get();
+        int product1 = product.getProductQuantity();
+
 
         Customer customers = customerRepository.findCustomerByEmail(customer);
 
         User users = userRepository.findUserByLastName(user);
 
+//      SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm");
+//      System.out.println(takeOffTime);
+//      Date date_sold = formatter.parse(dateSold);
 
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm");
-        //System.out.println(takeOffTime);
-        Date date_sold = formatter.parse(dateSold);
+        long millis = System.currentTimeMillis();
+        Date dateSold = new Date(millis);
 
-        Sale sale = new Sale(customers,products,date_sold,price,quantity,users);
+        Sale sale = new Sale(customers,product,dateSold,price,quantity,users,totalPrice, productQuantity);
+        int new_quantity = product1 - quantity;
+        product.setProductQuantity(new_quantity);
+
         saleRepository.save(sale);
+        productRepository.save(product);
+
 
         return "redirect:/sales/list";
     }
 
-    @RequestMapping(value = "/sales/edit/{id}", method = RequestMethod.GET)
-    public String showUpdateForm(@PathVariable("id") int id, Model model) {
-
-        model.addAttribute("sale", saleRepository.findById(id).get());
-        return "sale/edit";
-    }
-
-    @RequestMapping(value = "/sales/update", method = RequestMethod.POST)
-    public String updateSale(Model model, @RequestParam int id,@RequestParam String dateSold, @RequestParam double price,@RequestParam int quantity) throws ParseException {
-
-        //BeanUtils.copyProperties(aircraft, "id");
-
-        Sale sale= saleRepository.findById(id).get();
-
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm");
-        //System.out.println(takeOffTime);
-        Date date_sold = formatter.parse(dateSold);
-
-        sale.setPrice(price);
-        sale.setQuantity(quantity);
-        sale.setDateSold(date_sold);
-
-        saleRepository.save(sale);
-
-        return "redirect:/sales/list";
-
-    }
+//    @RequestMapping(value = "/sales/edit/{id}", method = RequestMethod.GET)
+//    public String showUpdateForm(@PathVariable("id") int id, Model model) {
+//
+//        model.addAttribute("sale", saleRepository.findById(id).get());
+//        return "sale/edit";
+//    }
+//
+//    @RequestMapping(value = "/sales/update", method = RequestMethod.POST)
+//    public String updateSale(Model model, @RequestParam int id, @RequestParam int quantity){
+//
+//        //BeanUtils.copyProperties(aircraft, "id");
+//
+//        Sale sale= saleRepository.findById(id).get();
+//
+//        sale.setQuantity(quantity);
+//
+//        saleRepository.save(sale);
+//
+//        return "redirect:/sales/list";
+//
+//    }
 
     @RequestMapping(value = "/sales/delete/{id}", method = RequestMethod.GET)
     public String remove(@PathVariable("id") int id, Model model) {
@@ -105,6 +113,5 @@ public class SaleController {
 
         return "redirect:/sales/list";
     }
-
 
 }

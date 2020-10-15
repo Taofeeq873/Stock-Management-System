@@ -1,49 +1,38 @@
 package com.stocksystem.stockmanagement.model;
 
+import com.sun.istack.NotNull;
+
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-public class Purchase {
-
+public class AvailableProduct {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @ManyToOne
-    private Supplier supplier;
-
     private String name;
-    private double price;
+
+//    @ManyToOne
+    private String supplier;
+
     private int quantity;
+
     private Date datePurchased;
 
-    public Purchase(){
+    public AvailableProduct(){
 
     }
 
-    public Purchase(Supplier supplier, String name, double price, int quantity, Date datePurchased) {
-        this.supplier = supplier;
+    public AvailableProduct(String name, String supplier, int quantity, Date datePurchased) {
         this.name = name;
-        this.price = price;
+        this.supplier = supplier;
         this.quantity = quantity;
         this.datePurchased = datePurchased;
     }
 
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public Supplier getSupplier() {
-        return supplier;
-    }
-
-    public void setSupplier(Supplier supplier) {
-        this.supplier = supplier;
     }
 
     public String getName() {
@@ -54,12 +43,12 @@ public class Purchase {
         this.name = name;
     }
 
-    public double getPrice() {
-        return price;
+    public String getSupplier() {
+        return supplier;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
+    public void setSupplier(String supplier) {
+        this.supplier = supplier;
     }
 
     public int getQuantity() {

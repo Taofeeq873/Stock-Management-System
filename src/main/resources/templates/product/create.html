@@ -29,14 +29,18 @@
                             <div class="card-body">
                                 <h4 class="card-title">Create Item</h4>
                                 <div class="basic-form">
-                                    <form method="post" th:action="${'/products/add'}">
+                                    <form method="post" th:object="${availableProduct}" th:action="${'/products/add'}">
+
+<!--                                        <input type="hidden" class="form-control"  id="id" name="id" th:field="*{id}" readonly>-->
+
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
                                                 <label>Name</label>
-                                                <input type="text"  id="name" name="name" class="form-control" placeholder="Name" required>
+                                                <input type="text" class="form-control"  id="name" name="name" th:field="*{name}" readonly>
+
                                             </div>
                                             <div class="form-group col-md-6">
-                                                <label>Product_Type</label>
+                                                <label>Item Group</label>
                                                 <select id="productType" name="productType" class="form-control">
                                                     <option selected="selected">Choose...</option>
                                                     <option th:each="code : ${productType}" th:value="${code.getName()}" th:text="${code.getName()}"></option>
@@ -45,26 +49,32 @@
                                         </div>
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
-                                                <label>Quantity</label>
-                                                <input type="number"  id="quantity" name="quantity" class="form-control" placeholder="Quantity" required>
+                                                <label>Stock Quantity</label>
+                                                <input type="number"  id="quantity" name="quantity" class="form-control" th:field="*{quantity}" readonly>
                                             </div>
                                             <div class="form-group col-md-6">
-                                                <label>Description</label>
-                                                <input type="text" class="form-control" placeholder="Description" id="description" name="description" required>
+                                                <label>Create Quantity</label>
+                                                <input type="number" class="form-control" placeholder="Item Quantity" id="productQuantity" name="productQuantity" required>
                                             </div>
                                         </div>
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
                                                 <label>Supplier</label>
-                                                <select id="supplier" name="supplier" class="form-control">
-                                                    <option selected="selected">Choose...</option>
-                                                    <option th:each="row : ${supplier}" th:value="${row.getCompanyName()}" th:text="${row.getCompanyName()}"></option>
-                                                </select>
+                                                <input type="text" class="form-control"  id="supplier" name="supplier" th:field="*{supplier}" readonly>
+
+                                                <!--<select id="supplier" name="supplier" class="form-control" required>-->
+<!--                                                    <option selected="selected">Choose...</option>-->
+<!--                                                    <option th:each="row : ${supplier}" th:value="${row.getCompanyName()}" th:text="${row.getCompanyName()}"></option>-->
+<!--                                                </select>-->
                                             </div>
                                             <div class="form-group col-md-6">
-                                                <label>Price</label>
+                                                <label>Unit Price</label>
                                                 <input type="number" class="form-control" placeholder="Price" id="price" name="price" required>
                                             </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Description</label>
+                                            <input type="text" class="form-control" placeholder="Description" id="description" name="description" required>
                                         </div>
                                         <button type="submit" class="btn btn-dark" name="saveProduct" id="saveProduct">Save</button>
                                     </form>

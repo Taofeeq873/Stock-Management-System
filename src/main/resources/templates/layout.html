@@ -59,20 +59,6 @@
                         <span class="toggle-icon"><i class="icon-menu"></i></span>
                     </div>
                 </div>
-
-                <div class="header-left">
-                    <div class="input-group icons">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text bg-transparent border-0 pr-2 pr-sm-3" id="basic-addon1"><i class="mdi mdi-magnify"></i></span>
-                        </div>
-                        <input type="search" class="form-control" placeholder="Search Dashboard" aria-label="Search Dashboard">
-                        <div class="drop-down   d-md-none">
-                            <form action="#">
-                                <input type="text" class="form-control" placeholder="Search">
-                            </form>
-                        </div>
-                    </div>
-                </div>
                 <div class="header-right">
                     <ul class="clearfix">
                         <li class="icons dropdown d-none d-md-flex">
@@ -123,72 +109,65 @@
 
                     <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false" sec:authorize="hasRole('ROLE_ADMIN')">
-                            <i class="icon-basket menu-icon"></i><span class="nav-text">Items</span>
+                            <i class="icon-basket-loaded menu-icon"></i><span class="nav-text">All Stock Items</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Item Group</a>
-                                <ul aria-expanded="false">
-                                    <li><a href="/./productTypes/create">Create Item Group</a></li>
-                                    <li><a href="/./productTypes/list">List of Item Group</a></li>
-                                </ul>
-                            </li>
-                            <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Item</a>
-                                <ul aria-expanded="false">
-                                    <li><a href="/./products/create">Create Item</a></li>
-                                    <li><a href="/./products/list">List of Items</a></li>
-                                </ul>
-                            </li>
+                            <li><a href="/./availableProducts/list">All Stock Items</a></li>
+                            <li><a href="/./products/list">List of Created Items</a></li>
                         </ul>
                     </li>
 
+                    <li>
+                        <a class="has-arrow" href="javascript:void()" aria-expanded="false" sec:authorize="hasRole('ROLE_ADMIN')">
+                            <i class="icon-basket menu-icon"></i><span class="nav-text">Item Group</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li><a href="/./productTypes/create">Create Item Group</a></li>
+                            <li><a href="/./productTypes/list">List of Item Group</a></li>
+                        </ul>
+                    </li>
 
                     <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false" sec:authorize="hasRole('ROLE_ADMIN')">
                             <i class="icon-people menu-icon"></i><span class="nav-text">Customers</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Customers</a>
-                                <ul aria-expanded="false">
-                                    <li><a href="/./customers/create">Create Customers</a></li>
-                                    <li><a href="/./customers/list">List of Customers</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                        <ul aria-expanded="false">
-                            <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Sales</a>
-                                <ul aria-expanded="false">
-                                    <li><a href="/./sales/create">Create Sales</a></li>
-                                    <li><a href="/./sales/list">List of Sales</a></li>
-                                </ul>
-                            </li>
+                            <li><a href="/./customers/create">Create Customers</a></li>
+                            <li><a href="/./customers/list">List of Customers</a></li>
                         </ul>
                     </li>
 
+                    <li>
+                        <a class="has-arrow" href="javascript:void()" aria-expanded="false" sec:authorize="hasRole('ROLE_ADMIN')">
+                            <i class="icon-note menu-icon"></i><span class="nav-text">Sales</span>
+                        </a>
+                        <ul aria-expanded="false">
+<!--                            <li><a href="/./products/list">Create Sales</a></li>-->
+                            <li><a href="/./sales/list">List of Sales</a></li>
+                        </ul>
+                    </li>
 
                     <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false" sec:authorize="hasRole('ROLE_ADMIN')">
                             <i class="icon-user menu-icon"></i><span class="nav-text">Suppliers</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Supplier</a>
-                                <ul aria-expanded="false">
-                                    <li><a href="/./suppliers/create">Create Supplier</a></li>
-                                    <li><a href="/./suppliers/list">List of Suppliers</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                        <ul aria-expanded="false">
-                            <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Purchase</a>
-                                <ul aria-expanded="false">
-                                    <li><a href="/./purchases/create">Create Purchase</a></li>
-                                    <li><a href="/./purchases/list">List of Purchase</a></li>
-                                </ul>
-                            </li>
+                            <li><a href="/./suppliers/create">Create Supplier</a></li>
+                            <li><a href="/./suppliers/list">List of Suppliers</a></li>
                         </ul>
                     </li>
 
+                    <li>
+                        <a class="has-arrow" href="javascript:void()" aria-expanded="false" sec:authorize="hasRole('ROLE_ADMIN')">
+                            <i class="icon-note menu-icon"></i><span class="nav-text">Purchase</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li><a href="/./purchases/create">Create Purchase</a></li>
+                            <li><a href="/./purchases/list">List of Purchase</a></li>
+                        </ul>
+                    </li>
 
-                    <li >
+                    <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false" sec:authorize="hasRole('ROLE_ADMIN')">
                             <i class="icon-user menu-icon"></i><span class="nav-text">Users</span>
                         </a>
@@ -203,7 +182,6 @@
                             <li><a href="/./roles/list">Role</a></li>
                         </ul>
                     </li>
-
 
                     <hr class="my-2">
 
@@ -261,6 +239,7 @@
         <script src="/js/settings.js"></script>
         <script src="/js/gleek.js"></script>
         <script src="/js/styleSwitcher.js"></script>
+        <script src="/js/total.js"></script>
 
         <script src="/./js/dashboard/dashboard-1.js"></script>
 
@@ -290,8 +269,11 @@
         <script src="/./plugins/toastr/js/toastr.min.js"></script>
         <script src="/./plugins/toastr/js/toastr.init.js"></script>
 
-        <!-- Optional Section -->
-        <!--<th:block layout:fragment="optional" />-->
+         <!--Optional Section-->
+        <section layout:fragment="scripts">
+        </section>
+
+<!--        <th:block layout:fragment="optional" />-->
 </body>
 
 </html>

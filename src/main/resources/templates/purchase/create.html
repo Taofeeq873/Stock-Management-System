@@ -32,11 +32,13 @@
                                     <form method="post"  th:action="${'/purchases/add'}">
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
-                                                <label>Product</label>
-                                                <select id="Product" name="product" class="form-control">
-                                                    <option selected="selected">Choose...</option>
-                                                    <option th:each="row : ${product}" th:value="${row.getName()}" th:text="${row.getName()}"></option>
-                                                </select>
+                                                <label>Item</label>
+                                                <input type="text"  id="name" name="name" class="form-control" placeholder="Product Name" required>
+
+                                                <!--<select id="Product" name="product" class="form-control">-->
+<!--                                                    <option selected="selected">Choose...</option>-->
+<!--                                                    <option th:each="row : ${product}" th:value="${row.getName()}" th:text="${row.getName()}"></option>-->
+<!--                                                </select>-->
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label>Supplier</label>
@@ -55,10 +57,6 @@
                                                 <label>Price</label>
                                                 <input type="number" class="form-control" placeholder="Price" id="price" name="price" required>
                                             </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Date</label>
-                                            <input type="datetime-local" class="form-control" placeholder="Date" id="datePurchased" name="datePurchased" required>
                                         </div>
                                         <button type="submit" class="btn btn-dark" name="savePurchase" id="savePurchase">Save</button>
                                     </form>

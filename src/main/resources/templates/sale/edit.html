@@ -1,67 +1,77 @@
-<!DOCTYPE html>
+<!--<!DOCTYPE html>-->
 
-<html lang="en" xmlns:th="https://www.thymeleaf.org"
-      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layout}">
+<!--<html lang="en" xmlns:th="https://www.thymeleaf.org"-->
+<!--      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"-->
+<!--      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"-->
+<!--      layout:decorate="~{layout}">-->
 
-<head>
+<!--<head>-->
 
-    <title>Sirs-Inventory</title>
+<!--    <title>Sirs-Inventory</title>-->
 
-</head>
+<!--</head>-->
 
-<body>
+<!--<body>-->
 
-    <div layout:fragment="content">
+<!--    <div layout:fragment="content">-->
 
-       <!--**********************************
-            Content body start
-        ***********************************-->
-        <div class="content-body mt-5">
+<!--       &lt;!&ndash;**********************************-->
+<!--            Content body start-->
+<!--        ***********************************&ndash;&gt;-->
+<!--        <div class="content-body mt-5">-->
 
-            <div class="container">
+<!--            <div class="container">-->
 
-                <div class="justify-content-center">
-                    <div class="col-xl-7">
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="card-title">Edit Sale</h4>
-                                <div class="basic-form">
-                                    <form action="#" th:object="${sale}" th:action="${'/sales/update'}" method="post">
+<!--                <div class="justify-content-center">-->
+<!--                    <div class="col-xl-7">-->
+<!--                        <div class="card">-->
+<!--                            <div class="card-body">-->
+<!--                                <h4 class="card-title">Edit Sale</h4>-->
+<!--                                <div class="basic-form">-->
+<!--                                    <form action="#" th:object="${sale}" th:action="${'/sales/update'}" method="post">-->
 
-                                        <input type="hidden"  th:field="*{id}" name="id">
+<!--                                        <input type="hidden"  th:field="*{id}" name="id">-->
 
-                                        <div class="form-row">
-                                            <div class="form-group col-md-6">
-                                                <label>Quantity</label>
-                                                <input type="number" class="form-control" id="quantity" name="quantity" th:field="*{quantity}">
-                                            </div>
-                                            <div class="form-group col-md-6">
-                                                <label>Price</label>
-                                                <input type="number" class="form-control" id="price" name="price" th:field="*{price}">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Date</label>
-                                            <input type="datetime-local" class="form-control" th:field="*{dateSold}" id="datePurchase" name="datePurchase">
-                                        </div>
-                                        <button type="submit" class="btn btn-dark" name="saveProduct" id="saveProduct">Save</button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+<!--                                        <div class="form-row">-->
+<!--                                            <div class="form-group col-md-6">-->
+<!--                                                <label>Item</label>-->
+<!--                                                <input type="hidden" class="form-control" id="name" name="name" th:field="${}">-->
+<!--                                            </div>-->
 
-        <!--**********************************
-               Content body end
-         ***********************************-->
+<!--                                            <div class="form-group col-md-6">-->
+<!--                                                <label>Price</label>-->
+<!--                                                <input type="hidden" class="form-control" id="price" name="price" th:field="*{price}">-->
+<!--                                            </div>-->
+<!--                                        </div>-->
 
-    </div>
 
-</body>
+<!--                                        <div class="form-row">-->
+<!--                                            <div class="form-group col-md-6">-->
+<!--                                                <label>Quantity</label>-->
+<!--                                                <input type="number" class="form-control" id="quantity" name="quantity" th:field="*{quantity}">-->
+<!--                                            </div>-->
 
-</html>
+<!--                                            <div class="form-group col-md-6">-->
+<!--                                                <label>Date</label>-->
+<!--                                                <input type="datetime-local" class="form-control" th:field="*{dateSold}" id="datePurchase" name="datePurchase">-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                        <button type="submit" class="btn btn-dark" name="saveProduct" id="saveProduct">Save</button>-->
+<!--                                    </form>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+
+<!--        &lt;!&ndash;**********************************-->
+<!--               Content body end-->
+<!--         ***********************************&ndash;&gt;-->
+
+<!--    </div>-->
+
+<!--</body>-->
+
+<!--</html>-->

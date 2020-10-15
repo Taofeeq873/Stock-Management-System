@@ -32,6 +32,11 @@
 
                                         <input type="hidden"  th:field="*{id}" name="id">
 
+                                        <div class="form-group">
+                                            <label>Item</label>
+                                            <input type="text" class="form-control" th:field="*{name}" id="name" name="name">
+                                        </div>
+
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
                                                 <label>Quantity</label>
@@ -41,10 +46,6 @@
                                                 <label>Price</label>
                                                 <input type="number" class="form-control" id="price" name="price" th:field="*{price}">
                                             </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Date</label>
-                                            <input type="datetime-local" class="form-control" th:field="*{datePurchased}" id="datePurchase" name="datePurchase">
                                         </div>
                                         <button type="submit" class="btn btn-dark" name="saveProduct" id="saveProduct">Save</button>
                                     </form>

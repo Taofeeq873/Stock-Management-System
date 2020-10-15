@@ -36,12 +36,14 @@
                                             <tr>
                                                 <th scope="col">Id</th>
                                                 <th scope="col">Customer</th>
-                                                <th scope="col">Product</th>
+                                                <th scope="col">Item</th>
                                                 <th scope="col">Sales Man</th>
                                                 <th scope="col">Quantity</th>
                                                 <th scope="col">Price</th>
                                                 <th scope="col">Date Purchased</th>
-                                                <th scope="col">Edit</th>
+                                                <th scope="col">Total Price</th>
+
+                                                <!--<th scope="col">Edit</th>-->
                                                 <th scope="col">Delete</th>
                                             </tr>
                                         </thead>
@@ -52,10 +54,11 @@
                                                 <td th:text="${row.getProduct().getName()}"></td>
                                                 <td th:text="${row.getUser().getLastName()}"></td>
                                                 <td th:text="${row.getQuantity()}"></td>
-                                                <td th:text="${row.getPrice()}"></td>
+                                                <td th:text="${row.getProduct().getPrice()} + '0'"></td>
                                                 <td th:text="${row.getDateSold()}"></td>
+                                                <td th:text="${row.getTotalPrice()} + '0'"></td>
 
-                                                <td><a th:href="@{/sales/edit/{id}(id=${row.getId()})}"><button class="btn btn-warning btn"><i class="fa fa-pencil color-muted m-r-5"></i></button></a></td>
+<!--                                            <td><a th:href="@{/sales/edit/{id}(id=${row.getId()})}"><button class="btn btn-warning btn"><i class="fa fa-pencil color-muted m-r-5"></i></button></a></td>-->
                                                 <td><a data-toggle="modal" data-target="#staticBackdrop" th:attr="data-target='#staticBackdrop'+${row.getId()}"><button class="btn btn-warning btn"><i class="fa fa-close color-danger"></i></button></a></td>
 
                                                 <div class="modal fade" th:id="staticBackdrop+${row.getId()}" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -81,6 +84,13 @@
                                         </tbody>
                                     </table>
                                 </div>
+
+                                <div th:if="${allSales}" class="mt-3">
+                                    <span>We have the total of</span>
+                                    <span class="alert alert-info text-success" th:text="${allSales}"></span>
+                                    <span>Items Sold.</span>
+                                </div>
+
                             </div>
                         </div>
                     </div>

@@ -9,6 +9,9 @@ public interface PurchaseRepository extends CrudRepository<Purchase, Integer> {
 
     List<Purchase> findPurchaseByQuantityGreaterThanEqual(int quantity);
     Purchase findPurchaseBySupplier_LastName(String lastName);
+    Purchase findPurchaseByName(String name);
+
+
 
 
 }

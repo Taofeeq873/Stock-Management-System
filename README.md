@@ -6,20 +6,20 @@ Usually, the manual stock management method run with pen and paper is not only l
 
                                Scope
 
-In the application, the login page makes the system module. The Admin can use this module to log in to the system through a valid user ID and password. Once logged in, the Admin can control these features: 
+In the application, the login page makes entry to the system module. The Admin can use this entry to log in to the system module through a valid user ID and password. Once logged in, the Admin can control these features: 
 
 •	Enter stock
 •	View stock
 •	Dispatch stock
 •	Move stock
 
-The Admin can update and monitor all necessary information associated with stock management, including category, customer details, stock details, stock purchase, stock sales, stock entries, stock entries payments, stock sales payments, supplier details, etc. The application further includes other functions like printing payment receipts, view purchase reports and sales reports, and so on. 
+The Admin can update and monitor all necessary information associated with stock management, including category, customer details, stock details, stock purchase, stock sales, stock entries, supplier details. The application further includes other functions like printing payment receipts, view purchase reports and sales reports, and so on. 
 
                       Milestones
 
 •	Day 1 : Documentation of software development
 •	Day 2 : Creation of models, repositories and database
-•	 Day 3-6 : Creation of services and business logic
+•	Day 3-6 : Creation of services and business logic
 •	Day 7-8 : Development of our user interface
 •	Day 9 : Software testing for deployment
 •	Day 10 : Deployment  

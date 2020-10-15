@@ -23,17 +23,24 @@ public class Sale {
     @ManyToOne
     private User user;
 
+    private double totalPrice;
+
+    private int productQuantity;
+
+
     public Sale(){
 
     }
 
-    public Sale(Customer customer, Product product, Date dateSold, double price, int quantity, User user) {
+    public Sale(Customer customer, Product product, Date dateSold, double price, int quantity, User user, double totalPrice, int productQuantity) {
         this.customer = customer;
         this.product = product;
         this.dateSold = dateSold;
         this.price = price;
         this.quantity = quantity;
         this.user = user;
+        this.totalPrice = totalPrice;
+        this.productQuantity = productQuantity;
     }
 
     public int getId() {
@@ -90,5 +97,21 @@ public class Sale {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public double getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(double totalPrice) {
+        this.totalPrice = totalPrice;
+    }
+
+    public int getProductQuantity() {
+        return productQuantity;
+    }
+
+    public void setProductQuantity(int productQuantity) {
+        this.productQuantity = productQuantity;
     }
 }

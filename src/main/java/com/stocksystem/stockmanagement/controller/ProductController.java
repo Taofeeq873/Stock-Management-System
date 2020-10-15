@@ -1,15 +1,15 @@
 package com.stocksystem.stockmanagement.controller;
 
 import com.stocksystem.stockmanagement.model.*;
-import com.stocksystem.stockmanagement.repository.ProductRepository;
-import com.stocksystem.stockmanagement.repository.ProductTypeRepository;
-import com.stocksystem.stockmanagement.repository.SupplierRepository;
+import com.stocksystem.stockmanagement.repository.*;
 import org.apache.catalina.LifecycleState;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.xml.crypto.Data;
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
@@ -19,45 +19,65 @@ public class ProductController {
     final ProductRepository productRepository;
     final ProductTypeRepository productTypeRepository;
     final SupplierRepository supplierRepository;
+    final PurchaseRepository purchaseRepository;
+    final AvailableProductRepository availableProductRepository;
 
-    public ProductController(ProductRepository productRepository, ProductTypeRepository productTypeRepository, SupplierRepository supplierRepository) {
+    public ProductController(ProductRepository productRepository, ProductTypeRepository productTypeRepository, SupplierRepository supplierRepository, PurchaseRepository purchaseRepository, AvailableProductRepository availableProductRepository) {
         this.productRepository = productRepository;
         this.productTypeRepository = productTypeRepository;
         this.supplierRepository = supplierRepository;
+        this.purchaseRepository = purchaseRepository;
+        this.availableProductRepository = availableProductRepository;
     }
 
     @RequestMapping(value = "/products/list", method = RequestMethod.GET)
     public String product(Model model){
+
+//        List<Product> products = (List<Product>) productRepository.findAll();
+//         for (Product p : products){
+//             if (p.getQuantity() == 0 ){
+//                 model.addAttribute("enable" ,"enable");
+//                 productRepository.delete(p);
+//             }
+//         }
+
         model.addAttribute("products",productRepository.findAll());
+        model.addAttribute("allProducts", productRepository.count());
         return "product/list";
     }
-    @RequestMapping(value = "/products/availableProducts", method = RequestMethod.GET)
-    public String availableProducts(Model model, @RequestParam String name, @RequestParam String productType, @RequestParam int quantity) {
 
-        ProductType product_Type = productTypeRepository.findProductTypeByName(productType);
+    @RequestMapping(value = "/products/create/{id}", method = RequestMethod.GET)
+    public String create(@PathVariable("id") int id, Model model){
 
-        model.addAttribute("available_products", productRepository.searchAvailableProducts(name, product_Type, quantity));
-        return "product/availableProducts";
-    }
-    @RequestMapping(value = "/products/create", method = RequestMethod.GET)
-    public String create(Model model){
+        model.addAttribute("availableProduct", availableProductRepository .findById(id).get());
 
-        model.addAttribute("supplier", supplierRepository.findAll());
+//        model.addAttribute("purchase", purchaseRepository .findById(id).get());
+
+//        model.addAttribute("supplier", supplierRepository.findAll());
 
         model.addAttribute("productType", productTypeRepository.findAll());
 
         return "product/create";
     }
     @RequestMapping(value = "/products/add",method = RequestMethod.POST)
-    public String add(Model model, @RequestParam String name, @RequestParam String productType, @RequestParam int quantity,@RequestParam String description,@RequestParam String supplier, @RequestParam double price){
+    public String add(Model model, @RequestParam String name, @RequestParam String productType, @RequestParam int quantity, @RequestParam String description, @RequestParam String supplier, @RequestParam double price, @RequestParam int productQuantity){
+
+        AvailableProduct availableProduct = availableProductRepository.findAvailableProductByName(name);
+        int product_quantity = availableProduct.getQuantity();
 
         ProductType product_Type = productTypeRepository.findProductTypeByName(productType);
 
-        Supplier suppliers = supplierRepository.findSupplierByCompanyName(supplier);
+//        Supplier suppliers = supplierRepository.findSupplierByCompanyName(supplier);
 
-        Product product = new Product(name,product_Type,quantity,description,suppliers,price);
+        long millis = System.currentTimeMillis();
+        Date dateCreated = new Date(millis);
+
+        Product product = new Product(name,product_Type,quantity,description,supplier,price,dateCreated,availableProduct, productQuantity);
+        int new_quantity = product_quantity - productQuantity;
+        availableProduct.setQuantity(new_quantity);
 
         productRepository.save(product);
+        availableProductRepository.save(availableProduct);
 
         return "redirect:/products/list";
     }
@@ -74,7 +94,7 @@ public class ProductController {
     }
 
     @RequestMapping(value = "/products/update", method = RequestMethod.POST)
-    public String updateProduct(Model model, @RequestParam int id, @RequestParam String name,@RequestParam String productType, @RequestParam int quantity,@RequestParam String description,@RequestParam double price) {
+    public String updateProduct(Model model, @RequestParam int id, @RequestParam String productType, @RequestParam int quantity,@RequestParam String description,@RequestParam double price) {
 
         //BeanUtils.copyProperties(aircraft, "id");
 
@@ -82,10 +102,11 @@ public class ProductController {
 
         ProductType product_Type = productTypeRepository.findProductTypeByName(productType);
 
-        product.setName(name);
-        product.setQuantity(quantity);
+
+//        product.setProductQuantity(productQuantity);
         product.setDescription(description);
         product.setProductType(product_Type);
+        product.setQuantity(quantity);
         product.setPrice(price);
 
         productRepository.save(product);
@@ -100,6 +121,7 @@ public class ProductController {
         Product product = productRepository.findById(id).get();
 
         productRepository.delete(product);
+
         return "redirect:/products/list";
     }
 }
