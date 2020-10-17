@@ -22,78 +22,102 @@
 
           <div class="content-body mt-5">
 
-                <div class="container">
+                <div class="container mt-5">
 
                     <div class="justify-content-center">
 
-                        <div class="col-xl-12">
-                                <div class="card ">
-                                    <div class="card-body">
-                                        <h4 class="card-title">Customer List</h4>
-                                        <div class="table-responsive">
-                                            <table class="table table-bordered table-striped verticle-middle">
-                                                <thead>
-                                                    <tr>
-                                                        <th scope="col">Id</th>
-                                                        <th scope="col">Last Name</th>
-                                                        <th scope="col">First Name</th>
-                                                        <th scope="col">Phone</th>
-                                                        <th scope="col">Email</th>
-                                                        <th scope="col">Address</th>
-                                                        <th scope="col">Edit</th>
-                                                        <th scope="col">Delete</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr th:each="row : *{customers}">
-                                                        <td th:text="${row.getId()}"></td>
-                                                        <td th:text="${row.getLastName()}"></td>
-                                                        <td th:text="${row.getFirstName()}"></td>
-                                                        <td th:text="${row.getPhone()}"></td>
-                                                        <td th:text="${row.getAddress()}"></td>
-                                                        <td th:text="${row.getEmail()}"></td>
-                                                        <td><a th:href="@{/customers/edit/{id}(id=${row.getId()})}"><button class="btn btn-warning btn"><i class="fa fa-pencil color-muted m-r-5"></i></button></a></td>
+                        <div class="input-group icons" style="width: 170px">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text bg-transparent border-0 pr-2 pr-sm-3" id="basic-addon1"><i class="mdi mdi-magnify"></i></span>
+                            </div>
+                            <input type="search" id="myInput" class="form-control" placeholder="Search List">
+                        </div>
+
+                        <div class="col-xl-12 mt-5">
+                            <div class="card ">
+                                <div class="card-body">
+                                    <h4 class="card-title">Customer List</h4>
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered table-striped verticle-middle">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">Id</th>
+                                                    <th scope="col">Last Name</th>
+                                                    <th scope="col">First Name</th>
+                                                    <th scope="col">Phone</th>
+                                                    <th scope="col">Email</th>
+                                                    <th scope="col">Address</th>
+                                                    <th scope="col">Edit</th>
+                                                    <th scope="col">Delete</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="myTable">
+                                                <tr th:each="row : *{customers}">
+                                                    <td th:text="${row.getId()}"></td>
+                                                    <td th:text="${row.getLastName()}"></td>
+                                                    <td th:text="${row.getFirstName()}"></td>
+                                                    <td th:text="${row.getPhone()}"></td>
+                                                    <td th:text="${row.getAddress()}"></td>
+                                                    <td th:text="${row.getEmail()}"></td>
+                                                    <td><a th:href="@{/customers/edit/{id}(id=${row.getId()})}"><button class="btn btn-warning btn"><i class="fa fa-pencil color-muted m-r-5"></i></button></a></td>
 
 <!--                                                    <td><a th:href="@{/customers/delete/{id}(id=${row.getId()})}"><button class="btn btn-warning btn sweetalert m-t-30 sweet-success-cancel"><i class="fa fa-close color-danger"></i></button></a></td>-->
 
-                                                        <td><a data-toggle="modal" data-target="#staticBackdrop" th:attr="data-target='#staticBackdrop'+${row.getId()}"><button class="btn btn-warning btn"><i class="fa fa-close color-danger"></i></button></a></td>
+                                                    <td><a data-toggle="modal" data-target="#staticBackdrop" th:attr="data-target='#staticBackdrop'+${row.getId()}"><button class="btn btn-warning btn"><i class="fa fa-close color-danger"></i></button></a></td>
 
-                                                        <div class="modal fade" th:id="staticBackdrop+${row.getId()}" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                                            <div class="modal-dialog">
-                                                                <div class="modal-content">
-                                                                    <div class="modal-header">
-                                                                        <h3 class="modal-title float-left">Delete Customer</h3>
-                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                            <span aria-hidden="true">&times;</span>
-                                                                        </button>
-                                                                    </div>
-                                                                    <div class="modal-body">
-                                                                        <h4>Are you sure want to delete this Customer?</h4>
-                                                                    </div>
-                                                                    <div class="modal-footer">
-                                                                        <button type="button" class="btn btn-outline mr-5" data-dismiss="modal">Close</button>
-                                                                        <a type="button" class="btn btn-danger" th:href="@{/customers/delete/{id}(id=${row.getId()})}">Yes</a>
-                                                                    </div>
+                                                    <div class="modal fade" th:id="staticBackdrop+${row.getId()}" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h3 class="modal-title float-left">Delete Customer</h3>
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <h4>Are you sure want to delete this Customer?</h4>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-outline mr-5" data-dismiss="modal">Close</button>
+                                                                    <a type="button" class="btn btn-danger" th:href="@{/customers/delete/{id}(id=${row.getId()})}">Yes</a>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
+                                                    </div>
+                                                </tr>
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-            </div>
+          </div>
 
           <!--**********************************
             Content body end
           ***********************************-->
 
      </div>
+
+     <section layout:fragment="scripts">
+
+         <script>
+             $(document).ready(function(){
+                 $("#myInput").on("keyup", function() {
+                     let value = $(this).val().toLowerCase();
+                     $("#myTable tr").filter(function() {
+                         $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                     });
+                 });
+             });
+         </script>
+
+     </section>
+
+
 
 </body>
 

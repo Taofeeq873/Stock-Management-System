@@ -21,11 +21,18 @@
 
         <div class="content-body mt-5">
 
-            <div class="container">
+            <div class="container mt-5">
 
                 <div class="justify-content-center">
 
-                    <div class="col-xxl-12">
+                    <div class="input-group icons" style="width: 170px">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-transparent border-0 pr-2 pr-sm-3" id="basic-addon1"><i class="mdi mdi-magnify"></i></span>
+                        </div>
+                        <input type="search" id="myInput" class="form-control" placeholder="Search List">
+                    </div>
+
+                    <div class="col-xxl-12 mt-5">
                         <div class="card ">
                             <div class="card-body">
                                 <h4 class="card-title">Created Item List</h4>
@@ -46,7 +53,7 @@
                                             <th scope="col">Create Sales</th>
                                         </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody id="myTable">
                                             <tr th:each="row : *{products}">
                                                 <td th:text="${row.getId()}"></td>
                                                 <td th:text="${row.getName()}"></td>
@@ -54,7 +61,7 @@
                                                 <td th:text="${row.getProductQuantity()}"></td>
                                                 <td th:text="${row.getDescription()}"></td>
                                                 <td th:text="${row.getSupplier()}"></td>
-                                                <td th:text="${row.getPrice() + '0'}"></td>
+                                                <td th:text="'&#8358;' + ${row.getPrice() + '0'}"></td>
                                                 <td th:text="${row.getDateCreated()}"></td>
 
                                                 <td><a th:href="@{/products/edit/{id}(id=${row.getId()})}"><button class="btn btn-warning btn"><i class="fa fa-pencil color-muted m-r-5"></i></button></a> </td>
@@ -135,6 +142,17 @@
                 }
                 click();
             </script>
+
+           <script>
+               $(document).ready(function(){
+                   $("#myInput").on("keyup", function() {
+                       let value = $(this).val().toLowerCase();
+                       $("#myTable tr").filter(function() {
+                           $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                       });
+                   });
+               });
+           </script>
 
        </section>
 

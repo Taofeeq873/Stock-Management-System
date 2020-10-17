@@ -56,30 +56,38 @@ public class SaleController {
 
 //        Product products = productRepository.findProductByName(product);
 
-        Product product = productRepository.findById(id).get();
-        int product1 = product.getProductQuantity();
+//        if(productQuantity < quantity) {
+//            model.addAttribute("error", "Sales_Quantity cannot be more than the Product_Quantity");
+//
+//            return "sale/create";
+//
+//        }else {
+
+            Product product = productRepository.findById(id).get();
+            int product1 = product.getProductQuantity();
 
 
-        Customer customers = customerRepository.findCustomerByEmail(customer);
+            Customer customers = customerRepository.findCustomerByEmail(customer);
 
-        User users = userRepository.findUserByLastName(user);
+            User users = userRepository.findUserByLastName(user);
 
 //      SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm");
 //      System.out.println(takeOffTime);
 //      Date date_sold = formatter.parse(dateSold);
 
-        long millis = System.currentTimeMillis();
-        Date dateSold = new Date(millis);
+            long millis = System.currentTimeMillis();
+            Date dateSold = new Date(millis);
 
-        Sale sale = new Sale(customers,product,dateSold,price,quantity,users,totalPrice, productQuantity);
-        int new_quantity = product1 - quantity;
-        product.setProductQuantity(new_quantity);
+            Sale sale = new Sale(customers, product, dateSold, price, quantity, users, totalPrice, productQuantity);
+            int new_quantity = product1 - quantity;
+            product.setProductQuantity(new_quantity);
 
-        saleRepository.save(sale);
-        productRepository.save(product);
+            saleRepository.save(sale);
+            productRepository.save(product);
 
 
-        return "redirect:/sales/list";
+            return "redirect:/sales/list";
+//        }
     }
 
 //    @RequestMapping(value = "/sales/edit/{id}", method = RequestMethod.GET)

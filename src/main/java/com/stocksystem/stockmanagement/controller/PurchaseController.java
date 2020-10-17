@@ -80,20 +80,20 @@ public class PurchaseController {
     }
 
     @RequestMapping(value = "/purchases/update", method = RequestMethod.POST)
-    public String updatePurchase(Model model, @RequestParam int id, @RequestParam String name, @RequestParam double price,@RequestParam int quantity, @RequestParam String datePurchased) throws ParseException {
+    public String updatePurchase(Model model, @RequestParam int id, @RequestParam String name, @RequestParam double price,@RequestParam int quantity) {
 
         //BeanUtils.copyProperties(aircraft, "id");
 
         Purchase purchase= purchaseRepository.findById(id).get();
 
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm");
-        //System.out.println(takeOffTime);
-        Date date_purchased = formatter.parse(datePurchased);
+//        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm");
+//        //System.out.println(takeOffTime);
+//        Date date_purchased = formatter.parse(datePurchased);
 
         purchase.setName(name);
         purchase.setPrice(price);
         purchase.setQuantity(quantity);
-        purchase.setDatePurchased(date_purchased);
+//        purchase.setDatePurchased(date_purchased);
 
         purchaseRepository.save(purchase);
 

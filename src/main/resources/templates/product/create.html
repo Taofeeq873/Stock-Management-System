@@ -31,7 +31,11 @@
                                 <div class="basic-form">
                                     <form method="post" th:object="${availableProduct}" th:action="${'/products/add'}">
 
-<!--                                        <input type="hidden" class="form-control"  id="id" name="id" th:field="*{id}" readonly>-->
+<!--                                        <div th:if="${error}" class="alert alert-error">-->
+<!--                                            <span th:text="${error}"></span>-->
+<!--                                        </div>-->
+
+                                        <input type="hidden" id="id" name="id" th:field="*{id}">
 
                                         <div class="form-row">
                                             <div class="form-group col-md-6">

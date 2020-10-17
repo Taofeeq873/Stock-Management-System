@@ -60,26 +60,35 @@ public class ProductController {
         return "product/create";
     }
     @RequestMapping(value = "/products/add",method = RequestMethod.POST)
-    public String add(Model model, @RequestParam String name, @RequestParam String productType, @RequestParam int quantity, @RequestParam String description, @RequestParam String supplier, @RequestParam double price, @RequestParam int productQuantity){
-
-        AvailableProduct availableProduct = availableProductRepository.findAvailableProductByName(name);
-        int product_quantity = availableProduct.getQuantity();
-
-        ProductType product_Type = productTypeRepository.findProductTypeByName(productType);
+    public String add(Model model,@RequestParam int id, @RequestParam String name, @RequestParam String productType, @RequestParam int quantity, @RequestParam String description, @RequestParam String supplier, @RequestParam double price, @RequestParam int productQuantity){
 
 //        Supplier suppliers = supplierRepository.findSupplierByCompanyName(supplier);
 
-        long millis = System.currentTimeMillis();
-        Date dateCreated = new Date(millis);
+//        if(productQuantity > quantity) {
+//            model.addAttribute("error", "Product_Quantity cannot be more than the Stock_Quantity");
+//
+//            return "product/create";
+//
+//        }else {
 
-        Product product = new Product(name,product_Type,quantity,description,supplier,price,dateCreated,availableProduct, productQuantity);
-        int new_quantity = product_quantity - productQuantity;
-        availableProduct.setQuantity(new_quantity);
+            AvailableProduct availableProduct = availableProductRepository.findById(id).get();
+//          AvailableProduct availableProduct = availableProductRepository.findAvailableProductByName(name);
+            int product_quantity = availableProduct.getQuantity();
 
-        productRepository.save(product);
-        availableProductRepository.save(availableProduct);
+            ProductType product_Type = productTypeRepository.findProductTypeByName(productType);
 
-        return "redirect:/products/list";
+            long millis = System.currentTimeMillis();
+            Date dateCreated = new Date(millis);
+
+            Product product = new Product(name, product_Type, quantity, description, supplier, price, dateCreated, availableProduct, productQuantity);
+            int new_quantity = product_quantity - productQuantity;
+            availableProduct.setQuantity(new_quantity);
+
+            productRepository.save(product);
+            availableProductRepository.save(availableProduct);
+
+            return "redirect:/products/list";
+//        }
     }
     @RequestMapping(value = "/products/edit/{id}", method = RequestMethod.GET)
     public String showUpdateForm(@PathVariable("id") int id, Model model) {
