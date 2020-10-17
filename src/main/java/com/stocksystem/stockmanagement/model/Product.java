@@ -16,8 +16,8 @@ public class Product {
     @Column(unique = true,length = 50)
     private String name;
 
-    @ManyToOne
-    private ProductType productType;
+//    @ManyToOne
+    private String productType;
 
     private int quantity;
 
@@ -39,7 +39,7 @@ public class Product {
 
     }
 
-    public Product(String name, ProductType productType, int quantity,String description,String supplier,double price, Date dateCreated, AvailableProduct availableProduct, int productQuantity) {
+    public Product(String name, String productType, int quantity,String description,String supplier,double price, Date dateCreated, AvailableProduct availableProduct, int productQuantity) {
         this.name = name;
         this.productType = productType;
         this.quantity = quantity;
@@ -71,11 +71,11 @@ public class Product {
         this.quantity = quantity;
     }
 
-    public ProductType getProductType() {
+    public String getProductType() {
         return productType;
     }
 
-    public void setProductType(ProductType productType) {
+    public void setProductType(String productType) {
         this.productType = productType;
     }
 

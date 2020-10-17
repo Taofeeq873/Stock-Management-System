@@ -1,13 +1,7 @@
 package com.stocksystem.stockmanagement.controller;
 
-import com.stocksystem.stockmanagement.model.AvailableProduct;
-import com.stocksystem.stockmanagement.model.Product;
-import com.stocksystem.stockmanagement.model.Purchase;
-import com.stocksystem.stockmanagement.model.Supplier;
-import com.stocksystem.stockmanagement.repository.AvailableProductRepository;
-import com.stocksystem.stockmanagement.repository.ProductRepository;
-import com.stocksystem.stockmanagement.repository.PurchaseRepository;
-import com.stocksystem.stockmanagement.repository.SupplierRepository;
+import com.stocksystem.stockmanagement.model.*;
+import com.stocksystem.stockmanagement.repository.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,12 +19,14 @@ public class PurchaseController {
     final ProductRepository productRepository;
     final SupplierRepository supplierRepository;
     final AvailableProductRepository availableProductRepository;
+    final ProductTypeRepository productTypeRepository;
 
-    public PurchaseController(PurchaseRepository purchaseRepository, ProductRepository productRepository, SupplierRepository supplierRepository, AvailableProductRepository availableProductRepository) {
+    public PurchaseController(PurchaseRepository purchaseRepository, ProductRepository productRepository, SupplierRepository supplierRepository, AvailableProductRepository availableProductRepository, ProductTypeRepository productTypeRepository) {
         this.purchaseRepository = purchaseRepository;
         this.productRepository = productRepository;
         this.supplierRepository = supplierRepository;
         this.availableProductRepository = availableProductRepository;
+        this.productTypeRepository = productTypeRepository;
     }
 
     @RequestMapping(value = "/purchases/list", method = RequestMethod.GET)
@@ -47,24 +43,28 @@ public class PurchaseController {
 
         model.addAttribute("product", productRepository .findAll());
 
+        model.addAttribute("productType", productTypeRepository.findAll());
+
+
         return "purchase/create";
     }
 
     @RequestMapping(value = "/purchases/add",method = RequestMethod.POST)
-    public String add(Model model, @RequestParam String supplier, @RequestParam String name, @RequestParam double price,@RequestParam int quantity) {
+    public String add(Model model, @RequestParam String supplier, @RequestParam String name, @RequestParam double price,@RequestParam int quantity, @RequestParam String productType) {
 
 //        Product products = productRepository.findProductByName(product);
 
         Supplier suppliers = supplierRepository.findSupplierByCompanyName(supplier);
 
+        ProductType product_Type = productTypeRepository.findProductTypeByName(productType);
 
         long millis = System.currentTimeMillis();
         Date datePurchased = new Date(millis);
 
-        Purchase purchase = new Purchase(suppliers,name,price,quantity,datePurchased);
+        Purchase purchase = new Purchase(suppliers,name,price,quantity,datePurchased,product_Type);
         purchaseRepository.save(purchase);
 
-        AvailableProduct availableProduct = new AvailableProduct(name,supplier,quantity,datePurchased);
+        AvailableProduct availableProduct = new AvailableProduct(name,supplier,quantity,datePurchased,productType);
         availableProductRepository.save(availableProduct);
 
 

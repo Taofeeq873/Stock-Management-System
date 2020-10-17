@@ -112,14 +112,14 @@ public class SaleController {
 //
 //    }
 
-    @RequestMapping(value = "/sales/delete/{id}", method = RequestMethod.GET)
-    public String remove(@PathVariable("id") int id, Model model) {
-
-        Sale sale = saleRepository.findById(id).get();
-
-        saleRepository.delete(sale);
-
-        return "redirect:/sales/list";
-    }
+//    @RequestMapping(value = "/sales/delete/{id}", method = RequestMethod.GET)
+//    public String remove(@PathVariable("id") int id, Model model) {
+//
+//        Sale sale = saleRepository.findById(id).get();
+//
+//        saleRepository.delete(sale);
+//
+//        return "redirect:/sales/list";
+//    }
 
 }

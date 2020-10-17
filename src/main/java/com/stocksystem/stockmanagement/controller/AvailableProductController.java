@@ -31,15 +31,15 @@ public class AvailableProductController {
     }
 
 
-    @RequestMapping(value = "/availableProducts/delete/{id}", method = RequestMethod.GET)
-    public String remove(@PathVariable("id") int id, Model model) {
-
-        AvailableProduct availableProduct = availableProductRepository.findById(id).get();
-
-        availableProductRepository.delete(availableProduct);
-
-        return "redirect:/availableProducts/list";
-    }
+//    @RequestMapping(value = "/availableProducts/delete/{id}", method = RequestMethod.GET)
+//    public String remove(@PathVariable("id") int id, Model model) {
+//
+//        AvailableProduct availableProduct = availableProductRepository.findById(id).get();
+//
+//        availableProductRepository.delete(availableProduct);
+//
+//        return "redirect:/availableProducts/list";
+//    }
 
 
 }

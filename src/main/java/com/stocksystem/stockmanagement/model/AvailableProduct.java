@@ -20,15 +20,18 @@ public class AvailableProduct {
 
     private Date datePurchased;
 
+    private String productType;
+
     public AvailableProduct(){
 
     }
 
-    public AvailableProduct(String name, String supplier, int quantity, Date datePurchased) {
+    public AvailableProduct(String name, String supplier, int quantity, Date datePurchased, String productType) {
         this.name = name;
         this.supplier = supplier;
         this.quantity = quantity;
         this.datePurchased = datePurchased;
+        this.productType = productType;
     }
 
     public int getId() {
@@ -65,5 +68,13 @@ public class AvailableProduct {
 
     public void setDatePurchased(Date datePurchased) {
         this.datePurchased = datePurchased;
+    }
+
+    public String getProductType() {
+        return productType;
+    }
+
+    public void setProductType(String productType) {
+        this.productType = productType;
     }
 }

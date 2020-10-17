@@ -42,7 +42,8 @@
                                         <tr>
                                             <th scope="col">Id</th>
                                             <th scope="col">Supplier</th>
-                                            <th scope="col">Product Name</th>
+                                            <th scope="col">Item Name</th>
+                                            <th scope="col">Item Group</th>
                                             <th scope="col">Quantity</th>
                                             <th scope="col">Price</th>
                                             <th scope="col">Date Purchased</th>
@@ -55,6 +56,7 @@
                                             <td th:text="${row.getId()}"></td>
                                             <td th:text="${row.getSupplier().getCompanyName()}"></td>
                                             <td th:text="${row.getName()}"></td>
+                                            <td th:text="${row.getProductType().getName()}"></td>
                                             <td th:text="${row.getQuantity()}"></td>
                                             <td th:text="'&#8358;' + ${row.getPrice()} + '0'"></td>
                                             <td th:text="${row.getDatePurchased()}"></td>

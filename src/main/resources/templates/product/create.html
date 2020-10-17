@@ -27,7 +27,7 @@
                     <div class="col-xl-7">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Create Item</h4>
+                                <h4 class="card-title">Create Available Item For Sale</h4>
                                 <div class="basic-form">
                                     <form method="post" th:object="${availableProduct}" th:action="${'/products/add'}">
 
@@ -45,10 +45,11 @@
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label>Item Group</label>
-                                                <select id="productType" name="productType" class="form-control">
-                                                    <option selected="selected">Choose...</option>
-                                                    <option th:each="code : ${productType}" th:value="${code.getName()}" th:text="${code.getName()}"></option>
-                                                </select>
+                                                <input type="text" class="form-control"  id="productType" name="productType" th:field="*{productType}" readonly>
+                                                <!-- <select id="productType" name="productType" class="form-control">-->
+<!--                                                    <option selected="selected">Choose...</option>-->
+<!--                                                    <option th:each="code : ${productType}" th:value="${code.getName()}" th:text="${code.getName()}"></option>-->
+<!--                                                </select>-->
                                             </div>
                                         </div>
                                         <div class="form-row">

@@ -52,10 +52,8 @@ public class ProductController {
         model.addAttribute("availableProduct", availableProductRepository .findById(id).get());
 
 //        model.addAttribute("purchase", purchaseRepository .findById(id).get());
-
 //        model.addAttribute("supplier", supplierRepository.findAll());
-
-        model.addAttribute("productType", productTypeRepository.findAll());
+//        model.addAttribute("productType", productTypeRepository.findAll());
 
         return "product/create";
     }
@@ -75,12 +73,12 @@ public class ProductController {
 //          AvailableProduct availableProduct = availableProductRepository.findAvailableProductByName(name);
             int product_quantity = availableProduct.getQuantity();
 
-            ProductType product_Type = productTypeRepository.findProductTypeByName(productType);
+//            ProductType product_Type = productTypeRepository.findProductTypeByName(productType);
 
             long millis = System.currentTimeMillis();
             Date dateCreated = new Date(millis);
 
-            Product product = new Product(name, product_Type, quantity, description, supplier, price, dateCreated, availableProduct, productQuantity);
+            Product product = new Product(name, productType, quantity, description, supplier, price, dateCreated, availableProduct, productQuantity);
             int new_quantity = product_quantity - productQuantity;
             availableProduct.setQuantity(new_quantity);
 
@@ -95,27 +93,26 @@ public class ProductController {
 
         model.addAttribute("product", productRepository.findById(id).get());
 
-        model.addAttribute("productType", productTypeRepository.findAll());
+//        model.addAttribute("productType", productTypeRepository.findAll());
 
-        model.addAttribute("supplier", supplierRepository.findAll());
+//        model.addAttribute("supplier", supplierRepository.findAll());
 
         return "product/edit";
     }
 
     @RequestMapping(value = "/products/update", method = RequestMethod.POST)
-    public String updateProduct(Model model, @RequestParam int id, @RequestParam String productType, @RequestParam int quantity,@RequestParam String description,@RequestParam double price) {
+    public String updateProduct(Model model, @RequestParam int id, @RequestParam int quantity,@RequestParam String description,@RequestParam double price) {
 
         //BeanUtils.copyProperties(aircraft, "id");
 
         Product product= productRepository.findById(id).get();
 
-        ProductType product_Type = productTypeRepository.findProductTypeByName(productType);
+//        ProductType product_Type = productTypeRepository.findProductTypeByName(productType);
 
 
-//        product.setProductQuantity(productQuantity);
-        product.setDescription(description);
-        product.setProductType(product_Type);
         product.setQuantity(quantity);
+        product.setDescription(description);
+//        product.setProductType(productType);
         product.setPrice(price);
 
         productRepository.save(product);
@@ -124,13 +121,13 @@ public class ProductController {
 
     }
 
-    @RequestMapping(value = "/products/delete/{id}", method = RequestMethod.GET)
-    public String remove(@PathVariable("id") int id, Model model) {
-
-        Product product = productRepository.findById(id).get();
-
-        productRepository.delete(product);
-
-        return "redirect:/products/list";
-    }
+//    @RequestMapping(value = "/products/delete/{id}", method = RequestMethod.GET)
+//    public String remove(@PathVariable("id") int id, Model model) {
+//
+//        Product product = productRepository.findById(id).get();
+//
+//        productRepository.delete(product);
+//
+//        return "redirect:/products/list";
+//    }
 }
