@@ -14,5 +14,8 @@ public interface ProductRepository extends CrudRepository<Product, Integer> {
 //    @Query(value = "SELECT * FROM product p WHERE p.name = :name and p.product_type_id = :productType and p.quantity = :quantity", nativeQuery = true)
 //    List<Product> searchAvailableProducts(String name, ProductType productType, int quantity);
 
+    @Query(value = "SELECT * FROM product p WHERE p.name = :name and p.product_type_id = :productType and p.quantity = :quantity", nativeQuery = true)
+    List<Product> searchAvailableProducts(String name, ProductType productType, int quantity);
+
 
 }

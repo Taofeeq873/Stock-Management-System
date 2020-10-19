@@ -62,7 +62,7 @@
                                                 <td th:text="${row.getDescription()}"></td>
                                                 <td th:text="${row.getSupplier()}"></td>
                                                 <td th:text="'&#8358;' + ${row.getPrice() + '0'}"></td>
-                                                <td th:text="${row.getDateCreated()}"></td>
+                                                <td th:text="${#dates.format(row.getDateCreated(),'dd-MMM-yyyy HH:mm:ss a')}"></td>
 
                                                 <td><a th:href="@{/products/edit/{id}(id=${row.getId()})}"><button class="btn btn-warning btn"><i class="fa fa-pencil color-muted m-r-5"></i></button></a> </td>
 <!--                                                <td><a data-toggle="modal" data-target="#staticBackdrop" th:attr="data-target='#staticBackdrop'+${row.getId()}"><button class="btn btn-warning btn"><i class="fa fa-close color-danger"></i></button></a></td>-->
