@@ -40,7 +40,7 @@
                                     <table class="table table-bordered table-striped verticle-middle" id="item">
                                         <thead>
                                         <tr>
-                                            <th scope="col">Id</th>
+                                            <th scope="col">S/N</th>
                                             <th scope="col">Name</th>
                                             <th scope="col">Item Group</th>
                                             <th scope="col">Quantity</th>
@@ -153,6 +153,20 @@
                    });
                });
            </script>
+
+           <script>
+
+               function serialNo(){
+                   const table = document.getElementById("item");
+                   let s_No = 1;
+                   for (let line=1; line < table.rows.length; line++){
+                       table.rows[line].cells[0].innerHTML = s_No.toString();
+                       s_No++;
+                   }
+               }
+               serialNo();
+           </script>
+
 
        </section>
 

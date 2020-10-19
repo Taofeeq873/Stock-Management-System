@@ -37,10 +37,10 @@
                             <div class="card-body">
                                 <h4 class="card-title">Purchase List</h4>
                                 <div class="table-responsive">
-                                    <table class="table table-bordered table-striped verticle-middle">
+                                    <table class="table table-bordered table-striped verticle-middle" id="available">
                                         <thead>
                                         <tr>
-                                            <th scope="col">Id</th>
+                                            <th scope="col">S/N</th>
                                             <th scope="col">Supplier</th>
                                             <th scope="col">Item Name</th>
                                             <th scope="col">Item Group</th>
@@ -121,6 +121,19 @@
                     });
                 });
             });
+        </script>
+
+        <script>
+
+            function serialNo(){
+                const table = document.getElementById("available");
+                let s_No = 1;
+                for (let line=1; line < table.rows.length; line++){
+                    table.rows[line].cells[0].innerHTML = s_No.toString();
+                    s_No++;
+                }
+            }
+            serialNo();
         </script>
 
     </section>

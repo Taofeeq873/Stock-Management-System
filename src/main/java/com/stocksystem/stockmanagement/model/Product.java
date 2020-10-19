@@ -12,8 +12,8 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @NotNull
-    @Column(unique = true,length = 50)
+//    @NotNull
+//    @Column(unique = true,length = 50)
     private String name;
 
 //    @ManyToOne

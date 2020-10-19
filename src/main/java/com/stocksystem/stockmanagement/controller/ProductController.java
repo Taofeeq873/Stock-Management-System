@@ -101,7 +101,7 @@ public class ProductController {
     }
 
     @RequestMapping(value = "/products/update", method = RequestMethod.POST)
-    public String updateProduct(Model model, @RequestParam int id, @RequestParam int quantity,@RequestParam String description,@RequestParam double price) {
+    public String updateProduct(Model model, @RequestParam int id, @RequestParam int productQuantity,@RequestParam String description,@RequestParam double price) {
 
         //BeanUtils.copyProperties(aircraft, "id");
 
@@ -110,7 +110,7 @@ public class ProductController {
 //        ProductType product_Type = productTypeRepository.findProductTypeByName(productType);
 
 
-        product.setQuantity(quantity);
+        product.setProductQuantity(productQuantity);
         product.setDescription(description);
 //        product.setProductType(productType);
         product.setPrice(price);
