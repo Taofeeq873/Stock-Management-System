@@ -57,11 +57,11 @@
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
                                                 <label>Quantity</label>
-                                                <input type="number" class="form-control" id="productQuantity" name="productQuantity" th:field="*{productQuantity}" readonly>
+                                                <input type="number" class="form-control" id="quantity" name="quantity" th:field="*{quantity}" readonly>
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label>Sales Quantity</label>
-                                                <input type="number"  id="quantity"  onkeyup="multiplyClick()" name="quantity" class="form-control" placeholder="Quantity" required>
+                                                <input type="number"  id="salesQuantity"  onkeyup="multiplyClick()" name="salesQuantity" class="form-control" placeholder="Sales Quantity" required>
                                             </div>
                                         </div>
                                         <div class="form-row">
@@ -77,10 +77,15 @@
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
                                                 <label>Sales Man</label>
-                                                <select id="user" name="user" class="form-control">
-                                                    <option selected="selected">Choose...</option>
-                                                    <option th:each="r : ${user}" th:value="${r.getLastName()}" th:text="${r.getLastName()}"></option>
-                                                </select>
+<!--                                                <select id="user" name="user" class="form-control">-->
+<!--                                                    <option selected="selected">Choose...</option>-->
+<!--                                                    <option th:each="r : ${user}" th:value="${r.getLastName()}" th:text="${r.getLastName()}"></option>-->
+<!--                                                </select>-->
+                                                <input type="hidden" id="user" name="id" th:field="*{}">
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label>Tax (%)</label>
+                                                <input type="number" class="form-control" onkeyup="multiplyClick()" id="tax" name="tax" style="width: 30%;">
                                             </div>
                                         </div>
                                         <button type="submit" class="btn btn-dark" name="saveSale" id="saveSale">Save</button>

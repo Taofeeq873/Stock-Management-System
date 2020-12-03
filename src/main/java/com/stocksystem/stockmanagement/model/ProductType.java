@@ -44,4 +44,10 @@ public class ProductType {
 //    public void setData(byte[] data) {
 //        this.data = data;
 //    }
+
+    @Override
+    public String toString()
+    {
+        return "ProductType [id=" + id + ", name=" + name + "]";
+    }
 }

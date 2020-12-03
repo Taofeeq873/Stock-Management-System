@@ -28,27 +28,23 @@ public class Product {
 
     private double price;
 
-    private Date dateCreated;
+    private Date datePurchased;
 
-    @ManyToOne
-    private AvailableProduct availableProduct;
-
-    private int productQuantity;
+//    @ManyToOne
+//    private Purchase purchase;
 
     public Product(){
 
     }
 
-    public Product(String name, String productType, int quantity,String description,String supplier,double price, Date dateCreated, AvailableProduct availableProduct, int productQuantity) {
+    public Product(String name, String productType, int quantity,String description,String supplier,double price, Date datePurchased) {
         this.name = name;
         this.productType = productType;
         this.quantity = quantity;
         this.description = description;
         this.supplier = supplier;
         this.price = price;
-        this.dateCreated = dateCreated;
-        this.availableProduct = availableProduct;
-        this.productQuantity = productQuantity;
+        this.datePurchased = datePurchased;
     }
 
     public int getId() {
@@ -103,28 +99,20 @@ public class Product {
         this.price = price;
     }
 
-    public Date getDateCreated() {
-        return dateCreated;
+    public Date getDatePurchased() {
+        return datePurchased;
     }
 
-    public void setDateCreated(Date dateCreated) {
-        this.dateCreated = dateCreated;
+    public void setDatePurchased(Date datePurchased) {
+        this.datePurchased = datePurchased;
     }
 
-    public AvailableProduct getAvailableProduct() {
-        return availableProduct;
-    }
-
-    public void setAvailableProduct(AvailableProduct availableProduct) {
-        this.availableProduct = availableProduct;
-    }
-
-    public int getProductQuantity() {
-        return productQuantity;
-    }
-
-    public void setProductQuantity(int productQuantity) {
-        this.productQuantity = productQuantity;
-    }
+//    public Purchase getPurchase() {
+//        return purchase;
+//    }
+//
+//    public void setPurchase(Purchase purchase) {
+//        this.purchase = purchase;
+//    }
 }
 

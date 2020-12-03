@@ -1,19 +1,18 @@
 package com.stocksystem.stockmanagement;
 
-import com.stocksystem.stockmanagement.model.Customer;
-import com.stocksystem.stockmanagement.model.Supplier;
-import com.stocksystem.stockmanagement.repository.CustomerRepository;
-import com.stocksystem.stockmanagement.repository.SupplierRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @SpringBootApplication
 public class StockmanagementsystemApplication /*implements CommandLineRunner*/ {
 
     @Autowired
-    private SupplierRepository supplierRepository;
     public static void main(String[] args) {
         SpringApplication.run(StockmanagementsystemApplication.class, args);
     }
@@ -35,4 +34,13 @@ public class StockmanagementsystemApplication /*implements CommandLineRunner*/ {
 //        }
 //
 //    }
+//        @Bean
+//        public WebMvcConfigurer corsConfigurer() {
+//            return new WebMvcConfigurer() {
+//                @Override
+//                public void addCorsMappings(CorsRegistry registry) {
+//                    registry.addMapping("/productTypes").allowedOrigins("http://localhost:8080");
+//                }
+//            };
+//        }
 }

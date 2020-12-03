@@ -35,7 +35,7 @@
                     <div class="col-xxl-12 mt-5">
                         <div class="card ">
                             <div class="card-body">
-                                <h4 class="card-title">Available Items For Sale</h4>
+                                <h4 class="card-title">All Items</h4>
                                 <div class="table-responsive">
                                     <table class="table table-bordered table-striped verticle-middle" id="item">
                                         <thead>
@@ -46,10 +46,10 @@
                                             <th scope="col">Quantity</th>
                                             <th scope="col">Description</th>
                                             <th scope="col">Supplier</th>
-                                            <th scope="col">Price</th>
-                                            <th scope="col">Date Created</th>
-                                            <th scope="col">Edit</th>
-<!--                                            <th scope="col">Delete</th>-->
+                                            <th scope="col">Unit BuyingPrice</th>
+                                            <th scope="col">Date Purchased</th>
+<!--                                        <th scope="col">Edit</th>-->
+                                            <th scope="col">Delete</th>
                                             <th scope="col">Create Sales</th>
                                         </tr>
                                         </thead>
@@ -58,35 +58,35 @@
                                                 <td th:text="${row.getId()}"></td>
                                                 <td th:text="${row.getName()}"></td>
                                                 <td th:text="${row.getProductType()}"></td>
-                                                <td th:text="${row.getProductQuantity()}"></td>
+                                                <td th:text="${row.getQuantity()}"></td>
                                                 <td th:text="${row.getDescription()}"></td>
                                                 <td th:text="${row.getSupplier()}"></td>
                                                 <td th:text="'&#8358;' + ${row.getPrice() + '0'}"></td>
-                                                <td th:text="${#dates.format(row.getDateCreated(),'dd-MMM-yyyy HH:mm:ss a')}"></td>
+                                                <td th:text="${#dates.format(row.getDatePurchased(),'dd-MMM-yyyy HH:mm:ss a')}"></td>
 
-                                                <td><a th:href="@{/products/edit/{id}(id=${row.getId()})}"><button class="btn btn-warning btn"><i class="fa fa-pencil color-muted m-r-5"></i></button></a> </td>
-<!--                                                <td><a data-toggle="modal" data-target="#staticBackdrop" th:attr="data-target='#staticBackdrop'+${row.getId()}"><button class="btn btn-warning btn"><i class="fa fa-close color-danger"></i></button></a></td>-->
+<!--                                            <td><a th:href="@{/products/edit/{id}(id=${row.getId()})}"><button class="btn btn-warning btn"><i class="fa fa-pencil color-muted m-r-5"></i></button></a> </td>-->
+                                                <td><a data-toggle="modal" data-target="#staticBackdrop" th:attr="data-target='#staticBackdrop'+${row.getId()}"><button class="btn btn-warning btn"><i class="fa fa-close color-danger"></i></button></a></td>
                                                 <td><a th:href="@{/sales/create/{id}(id=${row.getId()})}"><button  class="btn btn-success btn">Create New Sales</button></a> </td>
 
-<!--                                                <div class="modal fade" th:id="staticBackdrop+${row.getId()}" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">-->
-<!--                                                    <div class="modal-dialog">-->
-<!--                                                        <div class="modal-content">-->
-<!--                                                            <div class="modal-header">-->
-<!--                                                                <h3 class="modal-title float-left">Delete Product</h3>-->
-<!--                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
-<!--                                                                    <span aria-hidden="true">&times;</span>-->
-<!--                                                                </button>-->
-<!--                                                            </div>-->
-<!--                                                            <div class="modal-body">-->
-<!--                                                                <h4>Are you sure want to delete this Product?</h4>-->
-<!--                                                            </div>-->
-<!--                                                            <div class="modal-footer">-->
-<!--                                                                <button type="button" class="btn btn-outline mr-5" data-dismiss="modal">Close</button>-->
-<!--                                                                <a type="button" class="btn btn-danger" th:href="@{/products/delete/{id}(id=${row.getId()})}">Yes</a>-->
-<!--                                                            </div>-->
-<!--                                                        </div>-->
-<!--                                                    </div>-->
-<!--                                                </div>-->
+                                                <div class="modal fade" th:id="staticBackdrop+${row.getId()}" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h3 class="modal-title float-left">Delete Product</h3>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <h4>Are you sure want to delete this Product?</h4>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-outline mr-5" data-dismiss="modal">Close</button>
+                                                                <a type="button" class="btn btn-danger" th:href="@{/products/delete/{id}(id=${row.getId()})}">Yes</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -115,8 +115,14 @@
        <section layout:fragment="scripts">
 
            <style>
-               .salesbtn{
-                   display:none;
+               .salesbtn {
+                   display: none;
+               }
+               .colorbtn{
+                   color: red;
+               }
+               .changebtn{
+                   color: green;
                }
            </style>
 
@@ -126,7 +132,7 @@
                     const table = document.getElementById("item");
                     // let btn = document.getElementById("sales");
                     for (let line=1; line < table.rows.length; line++){
-                        if (table.rows[line].cells[3].textContent == "0"){
+                        if (table.rows[line].cells[3].textContent <= "0"){
                             table.rows[line].cells[9].classList.add("salesbtn");
 
                             // btn.style.display = "none";
@@ -141,6 +147,22 @@
                 }
                 click();
             </script>
+
+           <script>
+
+               function click() {
+                   const table = document.getElementById("item");
+                   // let btn = document.getElementById("sales");
+                   for (let line=1; line < table.rows.length; line++){
+                       if (table.rows[line].cells[3].textContent < "10"){
+                           table.rows[line].cells[3].classList.add("colorbtn");
+                       }else
+                           table.rows[line].cells[3].classList.add("changebtn");
+                   }
+
+               }
+               click();
+           </script>
 
            <script>
                $(document).ready(function(){
@@ -166,9 +188,7 @@
                serialNo();
            </script>
 
-
        </section>
-
 
 </body>
 

@@ -20,11 +20,49 @@
 
         <div class="content-body mt-5">
 
+            <div class="input-group icons ml-auto mr-4" style="width: 200px" >
+                <div class="input-group-prepend">
+                    <span class="input-group-text bg-transparent border-0 pr-2 pr-sm-3" id="basic-addon1"><i class="mdi mdi-magnify"></i></span>
+                </div>
+                <input type="search" id="myInput" class="form-control" placeholder="Search List">
+            </div>
+
             <div class="container">
 
-                <div class="justify-content-center">
+                <div class="justify-content-center mt-5">
 
-                    <div class="col-xl-10">
+                    <div class="bootstrap-modal">
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-primary ml-4" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-plus"></i> Add New Item Group</button>
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModalCenter">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Add New Item Group</h5>
+                                        <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="basic-form">
+                                            <form method="post" th:action="${'/productTypes/add'}">
+                                                <div class="form-group">
+                                                    <label>Name</label>
+                                                    <input type="text" class="form-control" placeholder="Name" name="name" id="name" required>
+                                                </div>
+                                                <button type="submit" class="btn btn-dark" name="saveProductType" id="saveTypeProduct">Save</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-10 mt-5">
                         <div class="card ">
                             <div class="card-body">
                                 <h4 class="card-title">Item Group List</h4>
@@ -38,7 +76,7 @@
                                             <th scope="col">Delete</th>
                                         </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody id="myTable">
                                             <tr th:each="row : *{productTypes}">
                                                 <td th:text="${row.getId()}"></td>
                                                 <td th:text="${row.getName()}"></td>
@@ -73,8 +111,10 @@
                     </div>
                 </div>
             </div>
-
         </div>
+
+
+
 
         <!--**********************************
                Content body end
@@ -96,6 +136,17 @@
             }
             serialNo();
         </script>
+
+<!--        <script>-->
+<!--            $(document).ready(function(){-->
+<!--                $("#myInput").on("keyup", function() {-->
+<!--                    let value = $(this).val().toLowerCase();-->
+<!--                    $("#myTable tr").filter(function() {-->
+<!--                        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)-->
+<!--                    });-->
+<!--                });-->
+<!--            });-->
+<!--        </script>-->
 
     </section>
 

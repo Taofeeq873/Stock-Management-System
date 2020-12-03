@@ -1,101 +1,101 @@
-<!DOCTYPE html>
+<!--<!DOCTYPE html>-->
 
-<html lang="en" xmlns:th="https://www.thymeleaf.org"
-      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layout}">
+<!--<html lang="en" xmlns:th="https://www.thymeleaf.org"-->
+<!--      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"-->
+<!--      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"-->
+<!--      layout:decorate="~{layout}">-->
 
-<head>
+<!--<head>-->
 
-    <title>Sirs-Inventory</title>
+<!--    <title>Sirs-Inventory</title>-->
 
-</head>
+<!--</head>-->
 
-<body>
+<!--<body>-->
 
-   <div layout:fragment="content">
+<!--   <div layout:fragment="content">-->
 
-        <!--**********************************
-            Content body start
-        ***********************************-->
+<!--        &lt;!&ndash;**********************************-->
+<!--            Content body start-->
+<!--        ***********************************&ndash;&gt;-->
 
-        <div class="content-body mt-5">
+<!--        <div class="content-body mt-5">-->
 
-            <div class="container">
+<!--            <div class="container">-->
 
-                <div class="justify-content-center">
-                    <div class="col-xl-7">
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="card-title">Create Available Item For Sale</h4>
-                                <div class="basic-form">
-                                    <form method="post" th:object="${availableProduct}" th:action="${'/products/add'}">
+<!--                <div class="justify-content-center">-->
+<!--                    <div class="col-xl-7">-->
+<!--                        <div class="card">-->
+<!--                            <div class="card-body">-->
+<!--                                <h4 class="card-title">Create Available Item For Sale</h4>-->
+<!--                                <div class="basic-form">-->
+<!--                                    <form method="post" th:object="${availableProduct}" th:action="${'/products/add'}">-->
 
 <!--                                        <div th:if="${error}" class="alert alert-error">-->
 <!--                                            <span th:text="${error}"></span>-->
 <!--                                        </div>-->
 
-                                        <input type="hidden" id="id" name="id" th:field="*{id}">
+<!--                                        <input type="hidden" id="id" name="id" th:field="*{id}">-->
 
-                                        <div class="form-row">
-                                            <div class="form-group col-md-6">
-                                                <label>Name</label>
-                                                <input type="text" class="form-control"  id="name" name="name" th:field="*{name}" readonly>
+<!--                                        <div class="form-row">-->
+<!--                                            <div class="form-group col-md-6">-->
+<!--                                                <label>Name</label>-->
+<!--                                                <input type="text" class="form-control"  id="name" name="name" th:field="*{name}" readonly>-->
 
-                                            </div>
-                                            <div class="form-group col-md-6">
-                                                <label>Item Group</label>
-                                                <input type="text" class="form-control"  id="productType" name="productType" th:field="*{productType}" readonly>
-                                                <!-- <select id="productType" name="productType" class="form-control">-->
-<!--                                                    <option selected="selected">Choose...</option>-->
-<!--                                                    <option th:each="code : ${productType}" th:value="${code.getName()}" th:text="${code.getName()}"></option>-->
-<!--                                                </select>-->
-                                            </div>
-                                        </div>
-                                        <div class="form-row">
-                                            <div class="form-group col-md-6">
-                                                <label>Stock Quantity</label>
-                                                <input type="number"  id="quantity" name="quantity" class="form-control" th:field="*{quantity}" readonly>
-                                            </div>
-                                            <div class="form-group col-md-6">
-                                                <label>Create Quantity</label>
-                                                <input type="number" class="form-control" placeholder="Item Quantity" id="productQuantity" name="productQuantity" required>
-                                            </div>
-                                        </div>
-                                        <div class="form-row">
-                                            <div class="form-group col-md-6">
-                                                <label>Supplier</label>
-                                                <input type="text" class="form-control"  id="supplier" name="supplier" th:field="*{supplier}" readonly>
+<!--                                            </div>-->
+<!--                                            <div class="form-group col-md-6">-->
+<!--                                                <label>Item Group</label>-->
+<!--                                                <input type="text" class="form-control"  id="productType" name="productType" th:field="*{productType}" readonly>-->
+<!--                                                &lt;!&ndash; <select id="productType" name="productType" class="form-control">&ndash;&gt;-->
+<!--&lt;!&ndash;                                                    <option selected="selected">Choose...</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                                                    <option th:each="code : ${productType}" th:value="${code.getName()}" th:text="${code.getName()}"></option>&ndash;&gt;-->
+<!--&lt;!&ndash;                                                </select>&ndash;&gt;-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                        <div class="form-row">-->
+<!--                                            <div class="form-group col-md-6">-->
+<!--                                                <label>Stock Quantity</label>-->
+<!--                                                <input type="number"  id="quantity" name="quantity" class="form-control" th:field="*{quantity}" readonly>-->
+<!--                                            </div>-->
+<!--                                            <div class="form-group col-md-6">-->
+<!--                                                <label>Create Quantity</label>-->
+<!--                                                <input type="number" class="form-control" placeholder="Item Quantity" id="productQuantity" name="productQuantity" required>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                        <div class="form-row">-->
+<!--                                            <div class="form-group col-md-6">-->
+<!--                                                <label>Supplier</label>-->
+<!--                                                <input type="text" class="form-control"  id="supplier" name="supplier" th:field="*{supplier}" readonly>-->
 
-                                                <!--<select id="supplier" name="supplier" class="form-control" required>-->
-<!--                                                    <option selected="selected">Choose...</option>-->
-<!--                                                    <option th:each="row : ${supplier}" th:value="${row.getCompanyName()}" th:text="${row.getCompanyName()}"></option>-->
-<!--                                                </select>-->
-                                            </div>
-                                            <div class="form-group col-md-6">
-                                                <label>Unit Price</label>
-                                                <input type="number" class="form-control" placeholder="Price" id="price" name="price" required>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Description</label>
-                                            <input type="text" class="form-control" placeholder="Description" id="description" name="description" required>
-                                        </div>
-                                        <button type="submit" class="btn btn-dark" name="saveProduct" id="saveProduct">Save</button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+<!--                                                &lt;!&ndash;<select id="supplier" name="supplier" class="form-control" required>&ndash;&gt;-->
+<!--&lt;!&ndash;                                                    <option selected="selected">Choose...</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                                                    <option th:each="row : ${supplier}" th:value="${row.getCompanyName()}" th:text="${row.getCompanyName()}"></option>&ndash;&gt;-->
+<!--&lt;!&ndash;                                                </select>&ndash;&gt;-->
+<!--                                            </div>-->
+<!--                                            <div class="form-group col-md-6">-->
+<!--                                                <label>Unit Price</label>-->
+<!--                                                <input type="number" class="form-control" placeholder="Price" id="price" name="price" required>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                        <div class="form-group">-->
+<!--                                            <label>Description</label>-->
+<!--                                            <input type="text" class="form-control" placeholder="Description" id="description" name="description" required>-->
+<!--                                        </div>-->
+<!--                                        <button type="submit" class="btn btn-dark" name="saveProduct" id="saveProduct">Save</button>-->
+<!--                                    </form>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
 
-        <!--**********************************
-               Content body end
-           ***********************************-->
-   </div>
+<!--        &lt;!&ndash;**********************************-->
+<!--               Content body end-->
+<!--           ***********************************&ndash;&gt;-->
+<!--   </div>-->
 
-</body>
+<!--</body>-->
 
-</html>
+<!--</html>-->

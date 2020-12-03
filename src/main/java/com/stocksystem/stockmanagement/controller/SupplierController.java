@@ -5,11 +5,11 @@ import com.stocksystem.stockmanagement.repository.SupplierRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
+//@RestController
 @Controller
 public class SupplierController {
     final SupplierRepository supplierRepository;
@@ -18,14 +18,32 @@ public class SupplierController {
         this.supplierRepository = supplierRepository;
     }
 
+//
+//    @CrossOrigin(exposedHeaders = "http://localhost:8888")
+//    @RequestMapping(path="/suppliers/list", method = RequestMethod.GET)
+//    public List Supplier()
+//    {
+//        return (List)supplierRepository.findAll();
+//    }
+//
+//        //Read
+//    @CrossOrigin(exposedHeaders = "http://localhost:8888")
+//    @RequestMapping(value="/suppliers/list/{id}", method = RequestMethod.GET)
+//    public Supplier getProductTypeById(@PathVariable int id)
+//    {
+//        Supplier supplier = supplierRepository.findById(id).get();
+//        return supplier;
+//    }
+
     @RequestMapping(value = "/suppliers/list", method = RequestMethod.GET)
     public String suppliers(Model model){
         model.addAttribute("suppliers",supplierRepository.findAll());
         return "supplier/list";
     }
+
     @RequestMapping(value = "/suppliers/create", method = RequestMethod.GET)
     public String create(Model model){
-        return "supplier/create";
+        return "supplier/list";
     }
     @RequestMapping(value = "/suppliers/add",method = RequestMethod.POST)
     public String add(Model model, @RequestParam String lastName, @RequestParam String firstName, @RequestParam String phone, @RequestParam String address, @RequestParam String email, @RequestParam String companyName){

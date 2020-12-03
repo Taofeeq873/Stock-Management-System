@@ -46,13 +46,13 @@ public class SaleController {
 
 //        model.addAttribute("product", productRepository .findAll());
 
-        model.addAttribute("user", userRepository .findAll());
+        model.addAttribute("user", userRepository.findAll());
 
         return "sale/create";
     }
 
     @RequestMapping(value = "/sales/add",method = RequestMethod.POST)
-    public String add(Model model, @RequestParam int id, @RequestParam String customer, @RequestParam double price, @RequestParam int quantity, @RequestParam String user, @RequestParam double totalPrice, @RequestParam int productQuantity){
+    public String add(Model model, @RequestParam int id, @RequestParam String customer, @RequestParam double price, @RequestParam int salesQuantity, @RequestParam String user, @RequestParam double totalPrice, @RequestParam int quantity){
 
 //        Product products = productRepository.findProductByName(product);
 
@@ -64,7 +64,7 @@ public class SaleController {
 //        }else {
 
             Product product = productRepository.findById(id).get();
-            int product1 = product.getProductQuantity();
+            int product1 = product.getQuantity();
 
 
             Customer customers = customerRepository.findCustomerByEmail(customer);
@@ -78,9 +78,9 @@ public class SaleController {
             long millis = System.currentTimeMillis();
             Date dateSold = new Date(millis);
 
-            Sale sale = new Sale(customers, product, dateSold, price, quantity, users, totalPrice, productQuantity);
-            int new_quantity = product1 - quantity;
-            product.setProductQuantity(new_quantity);
+            Sale sale = new Sale(customers, product, dateSold, price, salesQuantity, users, totalPrice, quantity);
+            int new_quantity = product1 - salesQuantity;
+            product.setQuantity(new_quantity);
 
             saleRepository.save(sale);
             productRepository.save(product);
@@ -112,14 +112,14 @@ public class SaleController {
 //
 //    }
 
-//    @RequestMapping(value = "/sales/delete/{id}", method = RequestMethod.GET)
-//    public String remove(@PathVariable("id") int id, Model model) {
-//
-//        Sale sale = saleRepository.findById(id).get();
-//
-//        saleRepository.delete(sale);
-//
-//        return "redirect:/sales/list";
-//    }
+    @RequestMapping(value = "/sales/delete/{id}", method = RequestMethod.GET)
+    public String remove(@PathVariable("id") int id, Model model) {
+
+        Sale sale = saleRepository.findById(id).get();
+
+        saleRepository.delete(sale);
+
+        return "redirect:/sales/list";
+    }
 
 }

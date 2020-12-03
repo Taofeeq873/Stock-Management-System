@@ -19,12 +19,13 @@ public class CustomerController {
     @RequestMapping(value = "/customers/list", method = RequestMethod.GET)
     public String customers(Model model){
         model.addAttribute("customers",customerRepository.findAll());
-        /*model.addAttribute("message","Thank You For Flying With Us");*/
+        model.addAttribute("allCustomers", customerRepository.count());
+
         return "customer/list";
     }
     @RequestMapping(value = "/customers/create", method = RequestMethod.GET)
     public String create(Model model){
-        return "customer/create";
+        return "customer/list";
     }
     @RequestMapping(value = "/customers/add",method = RequestMethod.POST)
     public String add(Model model, @RequestParam String lastName, @RequestParam String firstName, @RequestParam String phone, @RequestParam String address, @RequestParam String email){

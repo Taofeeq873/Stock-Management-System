@@ -1,26 +1,35 @@
 
 
-// let x = document.getElementById ("quantity");
+// let x = document.getElementById ("salesQuantity");
 //  let y = document.getElementById ("price");
 
-function multiply(x,y) {
-    let mult = parseFloat(x) * parseFloat(y);
-    return mult;
-}
-function getQuantity() {
-    let x = document.getElementById ("quantity");
+
+function getSalesQuantity() {
+    let x = document.getElementById ("salesQuantity");
     return x.value;
 }
 function getPrice() {
     let y = document.getElementById ("price");
     return y.value;
 }
+function getTax() {
+    let z = document.getElementById ("tax");
+    return z.value;
+}
 function multiplyClick() {
-    let x = getQuantity();
+    let x = getSalesQuantity();
     let y = getPrice();
-    let result = multiply(x,y);
+    let z = getTax();
+    let result = multiply(x,y,z);
    document.getElementById("total").value = result;
 }
+function multiply(x,y,z) {
+    let result = x * y * z;
+    let mult =  result / 100;
+    let final = parseFloat(mult);
+    return final;
+}
+
 multiplyClick();
 
 

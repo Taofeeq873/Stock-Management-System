@@ -11,7 +11,9 @@ import java.util.List;
 public interface ProductTypeRepository extends CrudRepository<ProductType, Integer> {
 
     ProductType findProductTypeByName(String name);
-    List<ProductType> findProductTypeByNameGreaterThanEqual(String name);
+    List<ProductType> findProductTypeById(int id);
+
+//     ProductType deleteProductTypeById(int id);
 
 //    @Query(value = "SELECT COUNT(*) FROM product_type", nativeQuery = true)
 //    int countAllProductType();

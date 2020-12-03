@@ -18,29 +18,29 @@ public class Sale {
 
     private Date dateSold;
     private  double price;
-    private int quantity;
+    private int salesQuantity;
 
     @ManyToOne
     private User user;
 
     private double totalPrice;
 
-    private int productQuantity;
+    private int quantity;
 
 
     public Sale(){
 
     }
 
-    public Sale(Customer customer, Product product, Date dateSold, double price, int quantity, User user, double totalPrice, int productQuantity) {
+    public Sale(Customer customer, Product product, Date dateSold, double price, int salesQuantity, User user, double totalPrice, int quantity) {
         this.customer = customer;
         this.product = product;
         this.dateSold = dateSold;
         this.price = price;
-        this.quantity = quantity;
+        this.salesQuantity = salesQuantity;
         this.user = user;
         this.totalPrice = totalPrice;
-        this.productQuantity = productQuantity;
+        this.quantity = quantity;
     }
 
     public int getId() {
@@ -83,12 +83,12 @@ public class Sale {
         this.price = price;
     }
 
-    public int getQuantity() {
-        return quantity;
+    public int getSalesQuantity() {
+        return salesQuantity;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+    public void setSalesQuantity(int salesQuantity) {
+        this.salesQuantity = salesQuantity;
     }
 
     public User getUser() {
@@ -107,11 +107,11 @@ public class Sale {
         this.totalPrice = totalPrice;
     }
 
-    public int getProductQuantity() {
-        return productQuantity;
+    public int getQuantity() {
+        return quantity;
     }
 
-    public void setProductQuantity(int productQuantity) {
-        this.productQuantity = productQuantity;
+    public void setQuantity(int Quantity) {
+        this.quantity = quantity;
     }
 }

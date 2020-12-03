@@ -23,54 +23,51 @@
             <div class="container-fluid mt-3">
 
                 <div class="row">
-                    <div class="col-lg-6">
-                        <div class="card">
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="card gradient-1">
                             <div class="card-body">
-                                <div class="card-title">
-                                    <h3>Product Details</h3>
+                                <h3 class="card-title text-white">Item Category</h3>
+                                <div class="d-inline-block" th:if="${allProductTypes}">
+                                    <h2 class="text-white" th:text="${allProductTypes}"></h2>
                                 </div>
-                                <div class="table-responsive">
-                                    <table class="table">
-                                        <tbody>
-                                        <tr th:object="${allAvailableProducts}">
-                                            <td><h5>All Item In Stock:</h5></td>
-                                            <td th="${allAvailableProducts}"><h5></h5></td>
-                                        </tr>
-                                        <tr th:object="${allProducts}">
-                                            <td><h5>All Item:</h5></td>
-                                            <td th:text="${allProducts}"><h5></h5></td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
+                                <span class="float-right display-5 opacity-5"><i class="fa fa-shopping-cart"></i></span>
                             </div>
                         </div>
                     </div>
-                    <!-- /# column -->
-                    <div class="col-lg-6">
-                        <div class="card">
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="card gradient-2">
                             <div class="card-body">
-                                <div class="card-title">
-                                    <h3>Customer Details</h3>
+                                <h3 class="card-title text-white">Net Profit</h3>
+                                <div class="d-inline-block">
+                                    <h2 class="text-white">$ 8541</h2>
+                                    <p class="text-white mb-0">Jan - March 2019</p>
                                 </div>
-                                <div class="table-responsive">
-                                    <table class="table">
-                                        <tbody>
-                                        <tr>
-                                            <td><h5>All Customers:</h5></td>
-                                            <td><h5> <span></span></h5></td>
-                                        </tr>
-                                        <tr>
-                                            <td><h5>All Suppliers:</h5></td>
-                                            <td><h5></h5></td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
+                                <span class="float-right display-5 opacity-5"><i class="fa fa-money"></i></span>
                             </div>
                         </div>
                     </div>
-                    <!-- /# column -->
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="card gradient-3">
+                            <div class="card-body">
+                                <h3 class="card-title text-white">Customers</h3>
+                                <div class="d-inline-block" th:if="${allCustomers}">
+                                    <h2 class="text-white" th:text="${allCustomers}"></h2>
+                                </div>
+                                <span class="float-right display-5 opacity-5"><i class="fa fa-users"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="card gradient-4">
+                            <div class="card-body">
+                                <h3 class="card-title text-white">Items</h3>
+                                <div class="d-inline-block" th:if="${allProducts}">
+                                    <h2 class="text-white" th:text="${allProducts}"></h2>
+                                </div>
+                                <span class="float-right display-5 opacity-5"><i class="fa fa-shopping-basket"></i></span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <hr class="my-2">

@@ -4,15 +4,14 @@ import com.stocksystem.stockmanagement.model.*;
 import com.stocksystem.stockmanagement.repository.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
+//@RestController
 @Controller
 public class PurchaseController {
     final PurchaseRepository purchaseRepository;
@@ -32,25 +31,27 @@ public class PurchaseController {
     @RequestMapping(value = "/purchases/list", method = RequestMethod.GET)
     public String purchase(Model model){
         model.addAttribute("purchases",purchaseRepository.findAll());
-        model.addAttribute("allPurchases", productRepository.count());
+//      model.addAttribute("allPurchases", productRepository.count());
+        model.addAttribute("supplier", supplierRepository.findAll());
+        model.addAttribute("product", productRepository .findAll());
+        model.addAttribute("productType", productTypeRepository.findAll());
         return "purchase/list";
     }
 
-    @RequestMapping(value = "/purchases/create", method = RequestMethod.GET)
-    public String create(Model model){
-
-        model.addAttribute("supplier", supplierRepository.findAll());
-
-        model.addAttribute("product", productRepository .findAll());
-
-        model.addAttribute("productType", productTypeRepository.findAll());
-
-
-        return "purchase/create";
-    }
+//    @RequestMapping(value = "/purchases/create", method = RequestMethod.GET)
+//    public String create(Model model){
+//
+////        model.addAttribute("supplier", supplierRepository.findAll());
+////
+////        model.addAttribute("product", productRepository .findAll());
+////
+////        model.addAttribute("productType", productTypeRepository.findAll());
+//
+//        return "purchase/list";
+//    }
 
     @RequestMapping(value = "/purchases/add",method = RequestMethod.POST)
-    public String add(Model model, @RequestParam String supplier, @RequestParam String name, @RequestParam double price,@RequestParam int quantity, @RequestParam String productType) {
+    public String add(Model model, @RequestParam String supplier, @RequestParam String name, @RequestParam double price,@RequestParam int quantity, @RequestParam String productType, @RequestParam String description) {
 
 //        Product products = productRepository.findProductByName(product);
 
@@ -61,11 +62,11 @@ public class PurchaseController {
         long millis = System.currentTimeMillis();
         Date datePurchased = new Date(millis);
 
-        Purchase purchase = new Purchase(suppliers,name,price,quantity,datePurchased,product_Type);
+        Purchase purchase = new Purchase(suppliers,name,price,quantity,datePurchased,product_Type,description);
         purchaseRepository.save(purchase);
 
-        AvailableProduct availableProduct = new AvailableProduct(name,supplier,quantity,datePurchased,productType);
-        availableProductRepository.save(availableProduct);
+        Product product = new Product(name,supplier,quantity,description,productType,price,datePurchased);
+        productRepository.save(product);
 
 
         return "redirect:/purchases/list";
@@ -111,5 +112,68 @@ public class PurchaseController {
         return "redirect:/purchases/list";
     }
 
+//    //Create
+//    @CrossOrigin(exposedHeaders = "http://localhost:8888")
+//    @RequestMapping(path = "/purchase/create", method = RequestMethod.POST)
+//    public String create(@RequestParam String supplier, @RequestParam String name, @RequestParam double price,@RequestParam int quantity, @RequestParam String productType, @RequestParam String description) {
+//
+//        Supplier suppliers = supplierRepository.findById(Integer.parseInt(supplier)).get();
+//
+//        ProductType product_Type = productTypeRepository.findById(Integer.parseInt(productType)).get();
+//
+//        long millis = System.currentTimeMillis();
+//        Date datePurchased = new Date(millis);
+//
+//
+//        Purchase purchase = new Purchase(suppliers,name,price,quantity,datePurchased,product_Type,description);
+//        purchaseRepository.save(purchase);
+//
+//        return "Creation Successful";
+//    }
+//
+//    //Read
+//    @CrossOrigin(exposedHeaders = "http://localhost:8888")
+//    @RequestMapping(path="/purchase/list/{id}", method = RequestMethod.GET)
+//    public Purchase findPurchaseById(@PathVariable int id, Model model)
+//    {
+//        Purchase purchase = purchaseRepository.findById(id).get();
+//        return purchase;
+//    }
+//
+//    @CrossOrigin(exposedHeaders = "http://localhost:8888")
+//    @RequestMapping(path="/purchase/list", method = RequestMethod.GET)
+//    public List Purchase()
+//    {
+//        return (List)purchaseRepository.findAll();
+//    }
+//
+//    //Update
+//    @CrossOrigin(exposedHeaders = "http://localhost:8888")
+//    @RequestMapping(path = "/purchase/update", method = RequestMethod.PUT)
+//    public String update(@RequestParam int id, @RequestParam String name, @RequestParam double price,@RequestParam int quantity)
+//    {
+//        Purchase purchase = purchaseRepository.findById(id).get();
+//
+//        purchase.setName(name);
+//        purchase.setPrice(price);
+//        purchase.setQuantity(quantity);
+//
+//        purchaseRepository.save(purchase);
+//
+//        return "Successfully Updated";
+//
+//    }
+//
+//    //Delete
+//    @CrossOrigin(exposedHeaders = "http://localhost:8888")
+//    @RequestMapping(path = "/purchase/delete/{id}", method = RequestMethod.DELETE)
+//    public String delete(@PathVariable int id)
+//    {
+//        Purchase purchase = purchaseRepository.findById(id).get();
+//
+//        purchaseRepository.delete(purchase);
+//
+//        return "Successfully Deleted";
+//    }
 
 }

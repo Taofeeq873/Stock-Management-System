@@ -31,13 +31,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/admin/**").hasRole("ADMIN")
 
-//                .antMatchers("/customers/**").hasRole("ADMIN")
-//                .antMatchers("/products/**").hasRole("ADMIN")
-//                .antMatchers("/productTypes/**").hasRole("ADMIN")
-//                .antMatchers("/purchases/**").hasRole("ADMIN")
+                .antMatchers("/customers/**").hasRole("ADMIN")
+                .antMatchers("/products/**").hasRole("ADMIN")
+                .antMatchers("/productTypes/**").hasRole("ADMIN")
+                .antMatchers("/purchases/**").hasRole("ADMIN")
                 .antMatchers("/roles/**").hasRole("ADMIN")
-//                .antMatchers("/sales/**").hasRole("ADMIN")
-//                .antMatchers("/suppliers/**").hasRole("ADMIN")
+                .antMatchers("/sales/**").hasRole("ADMIN")
+                .antMatchers("/suppliers/**").hasRole("ADMIN")
                 .antMatchers("/users/list").hasRole("ADMIN")
                 .antMatchers("/users/edit").hasRole("ADMIN")
                 .antMatchers("/users/assignRole").hasRole("ADMIN")
@@ -47,6 +47,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/contactUs").permitAll()
                 .antMatchers("/layout").permitAll()
                 .antMatchers("/about").permitAll()
+
+//                .antMatchers("/purchase/list/**").permitAll()
+//                .antMatchers("/purchase/**").permitAll()
+//                .antMatchers("/purchase").permitAll()
+//
+//                .antMatchers("/suppliers/**").permitAll()
+//                .antMatchers("/suppliers/list/**").permitAll()
+//
+//                .antMatchers("/productTypes/**").permitAll()
+//                .antMatchers("/productTypes/list/**").permitAll()
+
                 .antMatchers("/login*").permitAll()
                 .antMatchers("/users/create").permitAll()
                 .antMatchers("/users/register").permitAll()

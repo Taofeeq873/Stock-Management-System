@@ -21,17 +21,20 @@ public class Purchase {
     @ManyToOne
     private ProductType productType;
 
+    private String description;
+
     public Purchase(){
 
     }
 
-    public Purchase(Supplier supplier, String name, double price, int quantity, Date datePurchased, ProductType productType) {
+    public Purchase(Supplier supplier, String name, double price, int quantity, Date datePurchased, ProductType productType, String description) {
         this.supplier = supplier;
         this.name = name;
         this.price = price;
         this.quantity = quantity;
         this.datePurchased = datePurchased;
         this.productType = productType;
+        this.description = description;
     }
 
     public int getId() {
@@ -88,5 +91,13 @@ public class Purchase {
 
     public void setProductType(ProductType productType) {
         this.productType = productType;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

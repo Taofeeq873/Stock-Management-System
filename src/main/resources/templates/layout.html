@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
@@ -17,6 +18,9 @@
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" th:href="@{/images/l-white.png}">
     <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" th:href="@{/./plugins/toastr/css/toastr.min.css}">
     <link rel="stylesheet" th:href="@{/./plugins/sweetalert/css/sweetalert.css}">
     <link rel="stylesheet" th:href="@{/css/style.css}">
 
@@ -76,7 +80,7 @@
                                 <div class="dropdown-content-body">
                                     <ul>
                                         <li>
-                                            <a th:href="@{/profile/{username}(username=${#request.remoteUser})}"><i class="icon-user"></i> <span>Profile</span></a>
+                                            <a th:href="@{/details}"><i class="icon-user"></i> <span>Profile</span></a>
                                         </li>
                                         <hr class="my-2">
                                         <li>
@@ -109,41 +113,41 @@
 
                     <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon-basket-loaded menu-icon"></i><span class="nav-text">Items</span>
+                            <i class="icon-basket menu-icon"></i><span class="nav-text">Item Group</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="/./availableProducts/list">All Purchased Items</a></li>
-                            <li><a href="/./products/list">Available Items for Sale</a></li>
+                            <!--<li><a href="/./productTypes/create">Create Item Group</a></li>-->
+                            <li><a href="/./productTypes/list">Item Group</a></li>
                         </ul>
                     </li>
 
                     <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon-basket menu-icon"></i><span class="nav-text">Item Group</span>
+                            <i class="icon-basket-loaded menu-icon"></i><span class="nav-text">Items / Sales</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="/./productTypes/create">Create Item Group</a></li>
-                            <li><a href="/./productTypes/list">List of Item Group</a></li>
+                            <li><a href="/./products/list">Create Sales</a></li>
+                            <li><a href="/./sales/list">List of Sales</a></li>
                         </ul>
                     </li>
+
+<!--                    <li>-->
+<!--                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">-->
+<!--                            <i class="icon-note menu-icon"></i><span class="nav-text">Sales</span>-->
+<!--                        </a>-->
+<!--                        <ul aria-expanded="false">-->
+<!--                            &lt;!&ndash;                            <li><a href="/./products/list">Create Sales</a></li>&ndash;&gt;-->
+<!--                            <li><a href="/./sales/list">List of Sales</a></li>-->
+<!--                        </ul>-->
+<!--                    </li>-->
 
                     <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
                             <i class="icon-people menu-icon"></i><span class="nav-text">Customers</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="/./customers/create">Create Customers</a></li>
-                            <li><a href="/./customers/list">List of Customers</a></li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon-note menu-icon"></i><span class="nav-text">Sales</span>
-                        </a>
-                        <ul aria-expanded="false">
-<!--                            <li><a href="/./products/list">Create Sales</a></li>-->
-                            <li><a href="/./sales/list">List of Sales</a></li>
+<!--                            <li><a href="/./customers/create">Create Customers</a></li>-->
+                            <li><a href="/./customers/list">Add Customers</a></li>
                         </ul>
                     </li>
 
@@ -152,18 +156,18 @@
                             <i class="icon-user menu-icon"></i><span class="nav-text">Suppliers</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="/./suppliers/create">Create Supplier</a></li>
-                            <li><a href="/./suppliers/list">List of Suppliers</a></li>
+<!--                            <li><a href="/./suppliers/create">Create Supplier</a></li>-->
+                            <li><a href="/./suppliers/list">Add Suppliers</a></li>
                         </ul>
                     </li>
 
                     <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon-note menu-icon"></i><span class="nav-text">Purchase</span>
+                            <i class="icon-note menu-icon"></i><span class="nav-text">Purchase / Item</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="/./purchases/create">Create Purchase</a></li>
-                            <li><a href="/./purchases/list">List of Purchase</a></li>
+                            <li><a href="/./purchases/list">Purchase / Item Management</a></li>
+<!--                        <li><a href="/./purchases/list">List of Purchase</a></li>-->
                         </ul>
                     </li>
 
@@ -264,6 +268,11 @@
         <!-- ChartistJS -->
         <script src="/./plugins/chartist/js/chartist.min.js"></script>
         <script src="/./plugins/chartist-plugin-tooltips/js/chartist-plugin-tooltip.min.js"></script>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
+        <script src="/js/datatable.js"></script>
 
         <!-- Toastr -->
         <script src="/./plugins/toastr/js/toastr.min.js"></script>
