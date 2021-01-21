@@ -14,3 +14,4 @@ In the application, the login page makes entry to the system module. The Admin c
 * Move stock
 
 The Admin can update and monitor all necessary information associated with stock management, including category, customer details, stock details, stock purchase, stock sales, stock entries, supplier details.
+
