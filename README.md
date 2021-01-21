@@ -16,7 +16,7 @@ In the application, the login page makes entry to the system module. The Admin c
 The Admin can update and monitor all necessary information associated with stock management, including category, customer details, stock details, stock purchase, stock sales, stock entries, supplier details.
 
 ## How it works
-When you register to the app it registers you as an admin or the owner automatically, so its the admin that will assign roles to other users. So its depend the role you are been assigned to will determine what you are to do on the app. 
+When you register to the app (https://sirs-inventory.herokuapp.com) it registers you as an admin or the owner automatically, so its the admin that will assign roles to other users. So its depend the role you are been assigned to will determine what you are to do on the app. 
 
 If you are assigned to a role of an admin or the owner of the app you will be able to do everything the app does. Its the role of the admin to firstly create the details of all their suppliers they make purchase of products from, so when making a purchase of a product its is also his role the take the details of the product he his purchasing so as to have the records for stocks. 
  
