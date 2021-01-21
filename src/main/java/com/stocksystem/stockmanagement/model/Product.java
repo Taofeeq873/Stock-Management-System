@@ -10,7 +10,7 @@ import java.util.Set;
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private long id;
 
 //    @NotNull
 //    @Column(unique = true,length = 50)
@@ -47,7 +47,7 @@ public class Product {
         this.datePurchased = datePurchased;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 

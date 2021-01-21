@@ -53,7 +53,7 @@ public class ProductTypeController {
         return "redirect:/productTypes/list";
     }
     @RequestMapping(value = "/productTypes/edit/{id}", method = RequestMethod.GET)
-    public String showUpdateForm(@PathVariable("id") int id, Model model) {
+    public String showUpdateForm(@PathVariable("id") long id, Model model) {
         //Aircraft aircraft = aircraftRepository.findById(id);
 
         model.addAttribute("productType", productTypeRepository.findById(id).get());
@@ -61,7 +61,7 @@ public class ProductTypeController {
     }
 
     @RequestMapping(value = "/productTypes/update", method = RequestMethod.POST)
-    public String updateProductType(Model model, @RequestParam int id, @RequestParam String name) {
+    public String updateProductType(Model model, @RequestParam long id, @RequestParam String name) {
 
         //BeanUtils.copyProperties(aircraft, "id");
 
@@ -74,7 +74,7 @@ public class ProductTypeController {
     }
 
     @RequestMapping(value = "/productTypes/delete/{id}", method = RequestMethod.GET)
-    public String remove(@PathVariable("id") int id, Model model) {
+    public String remove(@PathVariable("id") long id, Model model) {
 
         ProductType productType = productTypeRepository.findById(id).get();
 

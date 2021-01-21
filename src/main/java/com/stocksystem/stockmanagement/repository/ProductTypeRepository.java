@@ -8,7 +8,7 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.List;
 
 
-public interface ProductTypeRepository extends CrudRepository<ProductType, Integer> {
+public interface ProductTypeRepository extends CrudRepository<ProductType, Long> {
 
     ProductType findProductTypeByName(String name);
     List<ProductType> findProductTypeById(int id);

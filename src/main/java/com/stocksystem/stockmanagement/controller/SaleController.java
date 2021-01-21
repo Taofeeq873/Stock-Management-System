@@ -42,7 +42,7 @@ public class SaleController {
 
         model.addAttribute("customer", customerRepository.findAll());
 
-        model.addAttribute("product", productRepository .findById(id).get());
+        model.addAttribute("product", productRepository .findById((long) id).get());
 
 //        model.addAttribute("product", productRepository .findAll());
 
@@ -63,7 +63,7 @@ public class SaleController {
 //
 //        }else {
 
-            Product product = productRepository.findById(id).get();
+            Product product = productRepository.findById((long) id).get();
             int product1 = product.getQuantity();
 
 

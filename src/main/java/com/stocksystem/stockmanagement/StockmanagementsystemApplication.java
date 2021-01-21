@@ -23,8 +23,8 @@ public class StockmanagementsystemApplication /*implements CommandLineRunner*/ {
 //            Customer customer = new Customer("Azeez","Taofeeq","08034121786","12,Tejumade Crescent","azeeztaofeeq873@gmail.com");
 //            customerRepository.save(customer);
 //        }
-//
-//    }
+////
+////    }
 
 //    @Override
 //    public void run(String...args) throws Exception{

@@ -46,7 +46,7 @@
                                                 <th scope="col">Item</th>
                                                 <th scope="col">Sales Man</th>
                                                 <th scope="col">Quantity</th>
-                                                <th scope="col">Price</th>
+                                                <th scope="col">Unit Buying Price</th>
                                                 <th scope="col">Date Purchased</th>
                                                 <th scope="col">Total Price</th>
 <!--                                                <th scope="col">Edit</th>-->
@@ -61,7 +61,7 @@
                                                 <td th:text="${row.getUser().getLastName()}"></td>
                                                 <td th:text="${row.getSalesQuantity()}"></td>
                                                 <td th:text="'&#8358;' + ${row.getProduct().getPrice()} + '0'"></td>
-                                                <td th:text="${row.getDateSold()}"></td>
+                                                <td th:text="${#dates.format(row.getDateSold(),'dd-MMM-yyyy HH:mm:ss a')}"></td>
                                                 <td th:text="'&#8358;' + ${row.getTotalPrice()} + '0'"></td>
 
 <!--                                            <td><a th:href="@{/sales/edit/{id}(id=${row.getId()})}"><button class="btn btn-warning btn"><i class="fa fa-pencil color-muted m-r-5"></i></button></a></td>-->

@@ -127,7 +127,7 @@ public class ProductController {
 //    }
 
     @RequestMapping(value = "/products/delete/{id}", method = RequestMethod.GET)
-    public String remove(@PathVariable("id") int id, Model model) {
+    public String remove(@PathVariable("id") long id, Model model) {
 
         Product product = productRepository.findById(id).get();
 
